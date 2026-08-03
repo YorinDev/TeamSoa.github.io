@@ -1,1 +1,193 @@
+/* ==========================
+        HEADER
+========================== */
 
+
+.roster-header{
+
+    text-align:center;
+
+    padding-top:160px;
+
+}
+
+
+.roster-header h1{
+
+    font-size:60px;
+
+    color:#FF7A00;
+
+}
+
+
+
+.roster-header p{
+
+    margin-top:20px;
+
+    color:#C9CED6;
+
+    font-size:18px;
+
+}
+
+
+
+/* ==========================
+        ROSTER
+========================== */
+
+
+.roster{
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+
+
+.roster h2{
+
+    text-align:center;
+
+    font-size:42px;
+
+    margin-bottom:50px;
+
+}
+
+
+
+/* Liste joueurs */
+
+.players{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+}
+
+
+
+/* Carte joueur */
+
+.player-card{
+
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,122,0,.2);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+}
+
+
+
+.player-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+
+    0 0 40px rgba(255,122,0,.25);
+
+}
+
+
+
+/* Image 1672x941 */
+
+.player-card img{
+
+    width:100%;
+
+    aspect-ratio:1672 / 941;
+
+    object-fit:cover;
+
+}
+
+
+
+/* Infos */
+
+.player-info{
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+
+
+.player-info h3{
+
+    font-size:28px;
+
+}
+
+
+
+.player-info span{
+
+    color:#FF7A00;
+
+    font-weight:600;
+
+}
+
+
+
+.player-info p{
+
+    margin-top:15px;
+
+    color:#C9CED6;
+
+    line-height:1.7;
+
+}
+
+
+
+
+@media(max-width:1000px){
+
+    .players{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+@media(max-width:650px){
+
+    .players{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .roster-header h1{
+
+        font-size:42px;
+
+    }
+
+}
