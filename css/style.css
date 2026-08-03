@@ -4,23 +4,31 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@300;400;500;600&display=swap');
 
+
 /* ===========================
         RESET
 =========================== */
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+
 }
 
+
 html{
+
     scroll-behavior:smooth;
+
 }
+
 
 body{
 
-    background:#05070F;
+    background:#0F0803;
+
     color:white;
 
     font-family:"Poppins",sans-serif;
@@ -29,9 +37,34 @@ body{
 
 }
 
+
+/* Halo orange général */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at top,
+        rgba(255,122,0,.16),
+        transparent 45%);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+
+
 /* ===========================
-    SCROLLBAR
+        SCROLLBAR
 =========================== */
+
 
 ::-webkit-scrollbar{
 
@@ -39,18 +72,22 @@ body{
 
 }
 
+
 ::-webkit-scrollbar-track{
 
-    background:#0B0F18;
+    background:#120A04;
 
 }
+
 
 ::-webkit-scrollbar-thumb{
 
     background:#FF7A00;
+
     border-radius:50px;
 
 }
+
 
 ::-webkit-scrollbar-thumb:hover{
 
@@ -58,9 +95,12 @@ body{
 
 }
 
+
+
 /* ===========================
-    NAVIGATION
+        NAVIGATION
 =========================== */
+
 
 header{
 
@@ -77,11 +117,13 @@ header{
 
     backdrop-filter:blur(18px);
 
-    background:rgba(8,12,20,.72);
+    background:rgba(15,8,3,.75);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,122,0,.15);
 
 }
+
+
 
 nav{
 
@@ -101,6 +143,8 @@ nav{
 
 }
 
+
+
 .nav-left,
 .nav-right{
 
@@ -112,11 +156,14 @@ nav{
 
 }
 
+
 .nav-right{
 
     justify-content:flex-end;
 
 }
+
+
 
 nav a{
 
@@ -133,6 +180,8 @@ nav a{
     position:relative;
 
 }
+
+
 
 nav a::after{
 
@@ -154,17 +203,23 @@ nav a::after{
 
 }
 
+
+
 nav a:hover{
 
     color:#FF7A00;
 
 }
 
+
+
 nav a:hover::after{
 
     width:100%;
 
 }
+
+
 
 .active{
 
@@ -176,16 +231,21 @@ nav a:hover::after{
 
     font-weight:800;
 
+
     text-shadow:
 
         0 0 12px #FF7A00,
+
         0 0 35px #FF7A00;
 
 }
 
+
+
 /* ===========================
         BOUTONS
 =========================== */
+
 
 .btn{
 
@@ -205,9 +265,13 @@ nav a:hover::after{
 
     transition:.3s;
 
-    box-shadow:0 0 25px rgba(255,122,0,.35);
+    box-shadow:
+
+        0 0 25px rgba(255,122,0,.35);
 
 }
+
+
 
 .btn:hover{
 
@@ -215,13 +279,18 @@ nav a:hover::after{
 
     background:#FFA33A;
 
-    box-shadow:0 0 35px rgba(255,122,0,.8);
+    box-shadow:
+
+        0 0 35px rgba(255,122,0,.8);
 
 }
+
+
 
 /* ===========================
         TITRES
 =========================== */
+
 
 h1,
 h2,
@@ -231,27 +300,36 @@ h3{
 
 }
 
+
+
 section{
 
     padding:100px 8%;
 
 }
 
+
+
 /* ===========================
         FOOTER
 =========================== */
 
+
 footer{
 
-    background:#090C13;
+    background:#120904;
 
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:
+
+        1px solid rgba(255,122,0,.15);
 
     padding:70px 20px;
 
     text-align:center;
 
 }
+
+
 
 footer img{
 
@@ -267,6 +345,8 @@ footer img{
 
 }
 
+
+
 footer h3{
 
     color:#FF7A00;
@@ -277,17 +357,23 @@ footer h3{
 
 }
 
+
+
 footer p{
 
     color:#A8A8A8;
 
 }
 
+
+
 /* ===========================
         RESPONSIVE
 =========================== */
 
+
 @media(max-width:1050px){
+
 
     nav{
 
@@ -305,11 +391,15 @@ footer p{
 
     }
 
+
+
     header{
 
         height:auto;
 
     }
+
+
 
     .nav-left,
     .nav-right{
@@ -320,15 +410,21 @@ footer p{
 
     }
 
+
+
     .nav-center{
 
         order:-1;
 
     }
 
+
 }
 
+
+
 @media(max-width:650px){
+
 
     nav a{
 
@@ -336,11 +432,15 @@ footer p{
 
     }
 
+
+
     .active{
 
         font-size:22px;
 
     }
+
+
 
     section{
 
@@ -348,11 +448,15 @@ footer p{
 
     }
 
+
 }
+
+
 
 /* ===========================
     APPARITION AU SCROLL
 =========================== */
+
 
 .reveal{
 
@@ -361,10 +465,14 @@ footer p{
     transform:translateY(70px);
 
     transition:
+
         opacity .9s ease,
+
         transform .9s ease;
 
 }
+
+
 
 .active-reveal{
 
