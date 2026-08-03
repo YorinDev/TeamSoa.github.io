@@ -1,5 +1,5 @@
 /* ==========================
-        HEADER
+        INTRO
 ========================== */
 
 
@@ -24,11 +24,11 @@
 
 .roster-header p{
 
-    margin-top:20px;
-
     color:#C9CED6;
 
     font-size:18px;
+
+    margin-top:20px;
 
 }
 
@@ -41,7 +41,7 @@
 
 .roster{
 
-    max-width:1400px;
+    max-width:1200px;
 
     margin:auto;
 
@@ -61,7 +61,7 @@
 
 
 
-/* Liste joueurs */
+/* Liste */
 
 .players{
 
@@ -75,10 +75,9 @@
 
 
 
-/* Carte joueur */
+/* Carte */
 
 .player-card{
-
 
     background:rgba(255,255,255,.04);
 
@@ -106,7 +105,7 @@
 
 
 
-/* Image 1672x941 */
+/* Images 1672x941 */
 
 .player-card img{
 
@@ -120,9 +119,9 @@
 
 
 
-/* Infos */
+/* Description */
 
-.player-info{
+.description{
 
     padding:25px;
 
@@ -132,27 +131,7 @@
 
 
 
-.player-info h3{
-
-    font-size:28px;
-
-}
-
-
-
-.player-info span{
-
-    color:#FF7A00;
-
-    font-weight:600;
-
-}
-
-
-
-.player-info p{
-
-    margin-top:15px;
+.description p{
 
     color:#C9CED6;
 
