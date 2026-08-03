@@ -36,7 +36,7 @@
 
     background:
         radial-gradient(circle at top,
-        rgba(0,170,255,.22),
+        rgba(255,140,0,.22),
         transparent 60%);
 
     z-index:-3;
@@ -81,7 +81,7 @@
     background:
 
         radial-gradient(circle,
-        rgba(0,170,255,.28),
+        rgba(255,140,0,.30),
         transparent 70%);
 
     filter:blur(40px);
@@ -104,7 +104,7 @@
 
     margin-bottom:35px;
 
-    filter:drop-shadow(0 0 35px rgba(0,170,255,.65));
+    filter:drop-shadow(0 0 35px rgba(255,140,0,.70));
 
     animation:float 5s ease-in-out infinite;
 
@@ -126,7 +126,7 @@
 
 .hero h2{
 
-    color:#19AEFF;
+    color:#FFA726;
 
     font-size:28px;
 
@@ -192,9 +192,9 @@
 
     transform:translateY(-8px);
 
-    border-color:#18AAFF;
+    border-color:#FF8C00;
 
-    box-shadow:0 0 35px rgba(0,170,255,.18);
+    box-shadow:0 0 35px rgba(255,140,0,.22);
 
 }
 
@@ -216,11 +216,13 @@
 
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,300px);
 
-    gap:30px;
+    justify-content:center;
 
-    max-width:1300px;
+    gap:35px;
+
+    max-width:1200px;
 
     margin:auto;
 
@@ -246,9 +248,9 @@
 
     transform:translateY(-10px);
 
-    border-color:#18AAFF;
+    border-color:#FF8C00;
 
-    box-shadow:0 0 40px rgba(0,170,255,.25);
+    box-shadow:0 0 40px rgba(255,140,0,.25);
 
 }
 
@@ -256,7 +258,7 @@
 
     font-size:52px;
 
-    color:#18AAFF;
+    color:#FF8C00;
 
     margin-bottom:15px;
 
@@ -360,7 +362,9 @@
 
     .stats{
 
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:repeat(2,300px);
+
+        justify-content:center;
 
     }
 
