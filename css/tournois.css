@@ -1,1 +1,148 @@
+```css
+/* ==========================
+        EQUIPES
+========================== */
 
+
+.teams{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+
+    margin:40px 0;
+
+}
+
+
+
+.team{
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+    border:
+
+    1px solid rgba(255,122,0,.15);
+
+
+    border-radius:15px;
+
+    padding:30px;
+
+}
+
+
+
+.team h4{
+
+    color:#FF7A00;
+
+    font-size:25px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.team p{
+
+    color:#C9CED6;
+
+    line-height:1.8;
+
+}
+
+
+
+.team h5{
+
+    margin-top:25px;
+
+    color:white;
+
+}
+
+
+
+.team ul{
+
+    margin-top:10px;
+
+    color:#C9CED6;
+
+    line-height:2;
+
+}
+
+
+
+/* ==========================
+        DATE / RESULTAT
+========================== */
+
+
+.date{
+
+    text-align:center;
+
+    color:#FF7A00;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.result{
+
+    text-align:center;
+
+    border-top:
+
+    1px solid rgba(255,122,0,.2);
+
+    padding-top:25px;
+
+    margin-top:30px;
+
+}
+
+
+
+.result h4{
+
+    color:#FF7A00;
+
+}
+
+
+
+.result p{
+
+    font-size:22px;
+
+    margin-top:10px;
+
+}
+
+
+
+/* RESPONSIVE */
+
+
+@media(max-width:800px){
+
+    .teams{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+```
