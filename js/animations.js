@@ -1,6 +1,6 @@
-const reveals = document.querySelectorAll(".reveal");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (reveals.length > 0) {
+    const reveals = document.querySelectorAll(".reveal");
 
     const observer = new IntersectionObserver((entries) => {
 
@@ -10,19 +10,21 @@ if (reveals.length > 0) {
 
                 entry.target.classList.add("active-reveal");
 
+                observer.unobserve(entry.target);
+
             }
 
         });
 
     }, {
-        threshold:0.15
+        threshold: 0.15
     });
 
 
-    reveals.forEach(section => {
+    reveals.forEach(element => {
 
-        observer.observe(section);
+        observer.observe(element);
 
     });
 
-}
+});
