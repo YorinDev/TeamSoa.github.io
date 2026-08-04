@@ -1,29 +1,28 @@
-// ===============================
-// Apparition des sections au scroll
-// ===============================
-
 const reveals = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver((entries) => {
+if (reveals.length > 0) {
 
-    entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries) => {
 
-        if (entry.isIntersecting) {
+        entries.forEach(entry => {
 
-            entry.target.classList.add("active-reveal");
+            if (entry.isIntersecting) {
 
-        }
+                entry.target.classList.add("active-reveal");
+
+            }
+
+        });
+
+    }, {
+        threshold:0.15
+    });
+
+
+    reveals.forEach(section => {
+
+        observer.observe(section);
 
     });
 
-}, {
-
-    threshold: 0.15
-
-});
-
-reveals.forEach(section => {
-
-    observer.observe(section);
-
-});
+}
