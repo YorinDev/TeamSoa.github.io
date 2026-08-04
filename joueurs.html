@@ -1,200 +1,249 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SOA Esport | Joueurs</title>
+<title>SOA Esport | Joueurs</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/joueurs.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.games-header{
+
+    text-align:center;
+    padding-top:160px;
+
+}
+
+.games-header h1{
+
+    font-size:60px;
+    color:#FF7A00;
+
+}
+
+.games-header p{
+
+    margin-top:20px;
+    color:#C9CED6;
+    font-size:18px;
+
+}
+
+
+
+.games{
+
+    max-width:1200px;
+
+    margin:70px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:45px;
+
+}
+
+
+
+.game-card{
+
+    background:rgba(255,122,0,.04);
+
+    border:1px solid rgba(255,122,0,.2);
+
+    border-radius:25px;
+
+    text-align:center;
+
+    padding:60px 40px;
+
+    transition:.35s;
+
+    text-decoration:none;
+
+    color:white;
+
+}
+
+
+
+.game-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#FF7A00;
+
+    box-shadow:0 0 40px rgba(255,122,0,.3);
+
+}
+
+
+
+.game-card h2{
+
+    color:#FF7A00;
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.game-card p{
+
+    color:#C9CED6;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+}
+
+
+
+.game-card span{
+
+    display:inline-block;
+
+    background:#FF7A00;
+
+    padding:15px 35px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+}
+
+
+
+@media(max-width:850px){
+
+.games{
+
+grid-template-columns:1fr;
+
+}
+
+.games-header h1{
+
+font-size:42px;
+
+}
+
+}
+
+</style>
 
 </head>
 
-
 <body>
-
 
 <header>
 
-    <nav>
+<nav>
 
-        <div class="nav-left">
+<div class="nav-left">
 
-            <a href="joueurs.html" class="active">Joueurs</a>
-            <a href="fondateurs.html">Fondateurs</a>
+<a href="joueurs.html" class="active">Joueurs</a>
+<a href="fondateurs.html">Fondateurs</a>
 
-        </div>
+</div>
 
+<div class="nav-center">
 
-        <div class="nav-center">
+<a href="./">Accueil</a>
 
-            <a href="./">Accueil</a>
+</div>
 
-        </div>
+<div class="nav-right">
 
+<a href="tournois.html">Tournois</a>
+<a href="contact.html">Nous contacter</a>
 
-        <div class="nav-right">
+</div>
 
-            <a href="tournois.html">Tournois</a>
-            <a href="contact.html">Nous contacter</a>
-
-        </div>
-
-    </nav>
+</nav>
 
 </header>
 
-
-
 <main>
 
+<section class="games-header">
 
-<section class="roster-header">
+<h1>Nos Joueurs</h1>
 
-    <h1>Nos Joueurs</h1>
-
-    <p>
-        Découvrez les joueurs qui représentent SOA Esport
-        sur Rocket League.
-    </p>
-
-</section>
-
-
-
-<section class="roster">
-
-
-    <h2>Roster Principal</h2>
-
-
-    <div class="players">
-
-
-        <div class="player-card">
-
-            <img src="images/joueurs/principal1.png" alt="Joueur SOA">
-
-            <div class="description">
-
-                <p>
-                    Grand champion 1
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="player-card">
-
-            <img src="images/joueurs/principal2.png" alt="Joueur SOA">
-
-            <div class="description">
-
-                <p>
-                    Grand champion 1
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
+<p>
+Choisissez le jeu dont vous souhaitez découvrir
+les rosters de SOA Esport.
+</p>
 
 </section>
 
+<section class="games reveal">
 
+<a href="joueursrocketleague.html" class="game-card">
 
+<h2>🚗 Rocket League</h2>
 
-<section class="roster">
+<p>
 
+Découvrez les équipes Rocket League,
+leurs rosters principaux,
+leurs joueurs espoirs
+et leurs performances.
 
-    <h2>Roster Espoir</h2>
+</p>
 
+<span>Voir les joueurs</span>
 
-    <div class="players">
+</a>
 
+<a href="joueursfortnite.html" class="game-card">
 
+<h2>🏆 Fortnite</h2>
 
-        <div class="player-card">
+<p>
 
-            <img src="images/joueurs/espoir1.png" alt="Joueur espoir">
+Découvrez les joueurs Fortnite
+représentant SOA Esport
+dans les compétitions
+et événements.
 
-            <div class="description">
+</p>
 
-                <p>
-                    Champion 3
-                </p>
+<span>Voir les joueurs</span>
 
-            </div>
-
-        </div>
-
-
-
-        <div class="player-card">
-
-            <img src="images/joueurs/espoir2.png" alt="Joueur espoir">
-
-            <div class="description">
-
-                <p>
-                    Grand champion 1 et freestyler
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-
-        <div class="player-card">
-
-            <img src="images/joueurs/espoir3.png" alt="Joueur espoir">
-
-            <div class="description">
-
-                <p>
-                    Grand champion 1
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
+</a>
 
 </section>
-
 
 </main>
 
-
-
 <footer>
 
-    <img src="images/SOA_logo_gris.jpg" alt="SOA">
+<img src="images/SOA_logo_gris.jpg" alt="SOA">
 
-    <h3>SOA ESPORT</h3>
+<h3>SOA ESPORT</h3>
 
-    <p>
-        © 2026 SOA Esport - Tous droits réservés.
-    </p>
+<p>© 2026 SOA Esport - Tous droits réservés.</p>
 
 </footer>
 
-
+<script src="js/script.js"></script>
+<script src="js/animations.js"></script>
 
 </body>
 
 </html>
+```
