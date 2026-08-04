@@ -1,243 +1,214 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SOA Esport | Joueurs Fortnite</title>
+    <title>SOA Esport | Joueurs Fortnite</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-<style>
+    <style>
 
-/* ==========================
-        INTRO
-========================== */
+    /* ==========================
+            INTRO
+    ========================== */
 
-.roster-header{
+    .roster-header{
 
-    text-align:center;
+        text-align:center;
+        padding-top:160px;
 
-    padding-top:160px;
+    }
 
-}
+    .roster-header h1{
 
-.roster-header h1{
+        font-size:60px;
+        color:#FF7A00;
 
-    font-size:60px;
+    }
 
-    color:#FF7A00;
+    .roster-header p{
 
-}
+        color:#C9CED6;
+        font-size:18px;
+        margin-top:20px;
 
-.roster-header p{
+    }
 
-    color:#C9CED6;
 
-    font-size:18px;
 
-    margin-top:20px;
+    /* ==========================
+            ROSTERS
+    ========================== */
 
-}
+    .roster{
 
+        max-width:1300px;
+        margin:auto;
 
+    }
 
-/* ==========================
-        ROSTERS
-========================== */
+    .roster h2{
 
-.roster{
+        text-align:center;
+        font-size:42px;
+        margin-bottom:50px;
 
-    max-width:1300px;
+    }
 
-    margin:auto;
 
-}
 
-.roster h2{
+    /* ==========================
+            GRILLE
+    ========================== */
 
-    text-align:center;
+    .players{
 
-    font-size:42px;
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:35px;
 
-    margin-bottom:50px;
+    }
 
-}
 
 
+    /* ==========================
+            CARTE
+    ========================== */
 
-/* ==========================
-        LISTE
-========================== */
+    .player-card{
 
-.players{
+        background:rgba(255,255,255,.04);
+        border:1px solid rgba(255,122,0,.2);
+        border-radius:20px;
+        overflow:hidden;
+        transition:.35s;
 
-    display:grid;
+    }
 
-    grid-template-columns:repeat(3,1fr);
+    .player-card:hover{
 
-    gap:35px;
+        transform:translateY(-10px);
 
-}
+        border-color:#FF7A00;
 
+        box-shadow:0 0 40px rgba(255,122,0,.25);
 
+    }
 
-/* ==========================
-        CARTE
-========================== */
 
-.player-card{
 
-    background:rgba(255,255,255,.04);
+    /* ==========================
+            IMAGE
+    ========================== */
 
-    border:1px solid rgba(255,122,0,.2);
+    .player-image{
 
-    border-radius:20px;
+        width:100%;
+        aspect-ratio:16/9;
 
-    overflow:hidden;
+        display:flex;
+        justify-content:center;
+        align-items:center;
 
-    transition:.35s;
+        background:
+        linear-gradient(
+            135deg,
+            rgba(255,122,0,.15),
+            rgba(255,122,0,.05)
+        );
 
-}
+    }
 
-.player-card:hover{
+    .player-image img{
 
-    transform:translateY(-10px);
+        width:100%;
+        height:100%;
+        object-fit:cover;
 
-    border-color:#FF7A00;
+    }
 
-    box-shadow:0 0 40px rgba(255,122,0,.25);
+    .no-image{
 
-}
+        color:#FF7A00;
+        font-size:18px;
+        font-weight:600;
 
+    }
 
 
-/* ==========================
-        IMAGE
-========================== */
 
-.player-image{
+    /* ==========================
+            INFOS
+    ========================== */
 
-    width:100%;
+    .description{
 
-    aspect-ratio:16/9;
+        padding:25px;
+        text-align:center;
 
-    background:linear-gradient(
-        135deg,
-        rgba(255,122,0,.15),
-        rgba(255,122,0,.05)
-    );
+    }
 
-    display:flex;
+    .description h3{
 
-    justify-content:center;
+        color:#FF7A00;
+        font-size:28px;
+        margin-bottom:20px;
 
-    align-items:center;
+    }
 
-    color:#FF7A00;
+    .role{
 
-    font-size:18px;
+        display:inline-block;
 
-    font-weight:600;
+        padding:8px 22px;
 
-}
+        border-radius:50px;
 
-.player-image img{
+        background:rgba(255,122,0,.15);
 
-    width:100%;
+        color:#FF7A00;
 
-    height:100%;
+        font-weight:600;
 
-    object-fit:cover;
+    }
 
-}
 
 
+    /* ==========================
+            RESPONSIVE
+    ========================== */
 
-/* ==========================
-        DESCRIPTION
-========================== */
+    @media(max-width:1000px){
 
-.description{
+        .players{
 
-    padding:25px;
+            grid-template-columns:repeat(2,1fr);
 
-    text-align:center;
+        }
 
-}
+    }
 
-.description h3{
+    @media(max-width:700px){
 
-    color:#FF7A00;
+        .players{
 
-    margin-bottom:15px;
+            grid-template-columns:1fr;
 
-    font-size:28px;
+        }
 
-}
+        .roster-header h1{
 
-.description p{
+            font-size:42px;
 
-    color:#C9CED6;
+        }
 
-    line-height:1.8;
+    }
 
-}
-
-.role{
-
-    display:inline-block;
-
-    margin-top:20px;
-
-    padding:8px 20px;
-
-    border-radius:50px;
-
-    background:rgba(255,122,0,.15);
-
-    color:#FF7A00;
-
-    font-weight:600;
-
-}
-
-
-
-/* ==========================
-        RESPONSIVE
-========================== */
-
-@media(max-width:1000px){
-
-.players{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-}
-
-@media(max-width:700px){
-
-.players{
-
-grid-template-columns:1fr;
-
-}
-
-.roster-header h1{
-
-font-size:42px;
-
-}
-
-}
-
-</style>
+    </style>
 
 </head>
 
@@ -278,11 +249,13 @@ font-size:42px;
 <h1>Fortnite</h1>
 
 <p>
-Découvrez les joueurs qui représentent
+Découvrez les joueurs représentant
 SOA Esport sur Fortnite.
 </p>
 
 </section>
+
+
 
 <section class="roster reveal">
 
@@ -290,21 +263,22 @@ SOA Esport sur Fortnite.
 
 <div class="players">
 
-<!-- Joueur 1 -->
+<!-- Joueur -->
 
 <div class="player-card">
 
 <div class="player-image">
 
 <!--
-Si tu veux une image :
+Pour ajouter une image :
 
 <img src="images/joueurs/fortnite/joueur1.png" alt="Pseudo">
 
-Sinon laisse simplement le texte ci-dessous.
 -->
 
+<div class="no-image">
 Aucune image
+</div>
 
 </div>
 
@@ -312,27 +286,25 @@ Aucune image
 
 <h3>Pseudo</h3>
 
-<p>
-
-Champion Fortnite<br>
-Role principal<br>
-Informations complémentaires
-
-</p>
-
-<span class="role">Principal</span>
+<span class="role">
+Principal
+</span>
 
 </div>
 
 </div>
 
-<!-- Joueur 2 -->
+
+
+<!-- Joueur -->
 
 <div class="player-card">
 
 <div class="player-image">
 
+<div class="no-image">
 Aucune image
+</div>
 
 </div>
 
@@ -340,46 +312,37 @@ Aucune image
 
 <h3>Pseudo</h3>
 
-<p>
-
-Champion Fortnite<br>
-Role principal<br>
-Informations complémentaires
-
-</p>
-
-<span class="role">Principal</span>
+<span class="role">
+Principal
+</span>
 
 </div>
 
 </div>
-```
-```html id="8i8qsu"
-<!-- Joueur 3 -->
+
+
+
+<!-- Joueur -->
 
 <div class="player-card">
 
-    <div class="player-image">
+<div class="player-image">
 
-        Aucune image
+<div class="no-image">
+Aucune image
+</div>
 
-    </div>
+</div>
 
-    <div class="description">
+<div class="description">
 
-        <h3>Pseudo</h3>
+<h3>Pseudo</h3>
 
-        <p>
+<span class="role">
+Principal
+</span>
 
-            Champion Fortnite<br>
-            Role principal<br>
-            Informations complémentaires
-
-        </p>
-
-        <span class="role">Principal</span>
-
-    </div>
+</div>
 
 </div>
 
@@ -387,159 +350,127 @@ Informations complémentaires
 
 </section>
 
-
-
 <section class="roster reveal">
 
 <h2>Roster Espoir</h2>
 
 <div class="players">
 
-<!-- Espoir 1 -->
-
 <div class="player-card">
 
-    <div class="player-image">
+<div class="player-image">
 
-        Aucune image
+<div class="no-image">
+Aucune image
+</div>
 
-    </div>
+</div>
 
-    <div class="description">
+<div class="description">
 
-        <h3>Pseudo</h3>
+<h3>Pseudo</h3>
 
-        <p>
+<span class="role">
+Espoir
+</span>
 
-            Joueur en développement<br>
-            Rang Fortnite<br>
-            Informations complémentaires
-
-        </p>
-
-        <span class="role">Espoir</span>
-
-    </div>
+</div>
 
 </div>
 
 
 
-<!-- Espoir 2 -->
-
 <div class="player-card">
 
-    <div class="player-image">
+<div class="player-image">
 
-        Aucune image
+<div class="no-image">
+Aucune image
+</div>
 
-    </div>
+</div>
 
-    <div class="description">
+<div class="description">
 
-        <h3>Pseudo</h3>
+<h3>Pseudo</h3>
 
-        <p>
+<span class="role">
+Espoir
+</span>
 
-            Joueur en développement<br>
-            Rang Fortnite<br>
-            Informations complémentaires
-
-        </p>
-
-        <span class="role">Espoir</span>
-
-    </div>
+</div>
 
 </div>
 
 
 
-<!-- Espoir 3 -->
-
 <div class="player-card">
 
-    <div class="player-image">
+<div class="player-image">
 
-        Aucune image
+<div class="no-image">
+Aucune image
+</div>
 
-    </div>
+</div>
 
-    <div class="description">
+<div class="description">
 
-        <h3>Pseudo</h3>
+<h3>Pseudo</h3>
 
-        <p>
+<span class="role">
+Espoir
+</span>
 
-            Joueur en développement<br>
-            Rang Fortnite<br>
-            Informations complémentaires
-
-        </p>
-
-        <span class="role">Espoir</span>
-
-    </div>
+</div>
 
 </div>
 
 
 
-<!-- Espoir 4 -->
-
 <div class="player-card">
 
-    <div class="player-image">
+<div class="player-image">
 
-        Aucune image
+<div class="no-image">
+Aucune image
+</div>
 
-    </div>
+</div>
 
-    <div class="description">
+<div class="description">
 
-        <h3>Pseudo</h3>
+<h3>Pseudo</h3>
 
-        <p>
+<span class="role">
+Espoir
+</span>
 
-            Joueur en développement<br>
-            Rang Fortnite<br>
-            Informations complémentaires
-
-        </p>
-
-        <span class="role">Espoir</span>
-
-    </div>
+</div>
 
 </div>
 
 
 
-<!-- Espoir 5 -->
-
 <div class="player-card">
 
-    <div class="player-image">
+<div class="player-image">
 
-        Aucune image
+<div class="no-image">
+Aucune image
+</div>
 
-    </div>
+</div>
 
-    <div class="description">
+<div class="description">
 
-        <h3>Pseudo</h3>
+<h3>Pseudo</h3>
 
-        <p>
+<span class="role">
+Espoir
+</span>
 
-            Joueur en développement<br>
-            Rang Fortnite<br>
-            Informations complémentaires
-
-        </p>
-
-        <span class="role">Espoir</span>
-
-    </div>
+</div>
 
 </div>
 
@@ -548,8 +479,6 @@ Informations complémentaires
 </section>
 
 </main>
-
-
 
 <footer>
 
@@ -563,12 +492,10 @@ Informations complémentaires
 
 </footer>
 
-
-
 <script src="js/script.js"></script>
 <script src="js/animations.js"></script>
 
 </body>
-
 </html>
-```
+
+
