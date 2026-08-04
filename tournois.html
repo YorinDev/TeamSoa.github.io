@@ -1,16 +1,437 @@
 ```html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SOA Esport | Tournois</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+
+<style>
+
+/* ==========================
+        HEADER
+========================== */
+
+
+.tournament-header{
+
+    text-align:center;
+    padding-top:160px;
+
+}
+
+
+.tournament-header h1{
+
+    font-size:60px;
+    color:#FF7A00;
+
+}
+
+
+.tournament-header p{
+
+    color:#C9CED6;
+    font-size:18px;
+    margin-top:20px;
+
+}
+
+
+
+
+/* ==========================
+        SECTION
+========================== */
+
+
+.tournament-section{
+
+    max-width:1200px;
+    margin:auto;
+
+}
+
+
+
+.tournament-section h2{
+
+    text-align:center;
+    font-size:42px;
+    margin-bottom:50px;
+
+}
+
+
+
+/* ==========================
+        CARTE TOURNOI
+========================== */
+
+
+.tournament-card{
+
+
+    background:
+    rgba(255,122,0,.04);
+
+
+    border:
+    1px solid rgba(255,122,0,.2);
+
+
+    border-radius:20px;
+
+
+    padding:40px;
+
+
+    margin-bottom:60px;
+
+
+    backdrop-filter:blur(15px);
+
+
+    transition:.35s;
+
+}
+
+
+
+.tournament-card:hover{
+
+    transform:translateY(-8px);
+
+
+    border-color:#FF7A00;
+
+
+    box-shadow:
+
+    0 0 40px rgba(255,122,0,.30);
+
+}
+
+
+
+.tournament-card h3{
+
+    text-align:center;
+
+    color:#FF7A00;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+.date{
+
+    text-align:center;
+
+    color:#C9CED6;
+
+    margin-bottom:40px;
+
+}
+
+
+
+
+/* ==========================
+        EQUIPES
+========================== */
+
+
+.teams{
+
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+
+
+}
+
+
+
+.team{
+
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+    border:
+
+    1px solid rgba(255,122,0,.15);
+
+
+    border-radius:15px;
+
+
+    padding:30px;
+
+}
+
+
+
+.team h4{
+
+
+    color:#FF7A00;
+
+    font-size:25px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.team p{
+
+    color:#C9CED6;
+
+    line-height:1.8;
+
+}
+
+
+
+.team h5{
+
+    margin-top:25px;
+
+    color:white;
+
+}
+
+
+
+.team ul{
+
+    color:#C9CED6;
+
+    line-height:2;
+
+}
+
+
+
+/* ==========================
+        RESULTAT
+========================== */
+
+
+.result{
+
+
+    text-align:center;
+
+
+    margin-top:40px;
+
+
+    padding-top:25px;
+
+
+    border-top:
+
+    1px solid rgba(255,122,0,.2);
+
+}
+
+
+
+.result h4{
+
+    color:#FF7A00;
+
+}
+
+
+
+.result p{
+
+    font-size:24px;
+
+}
+
+
+
+
+/* ==========================
+        VIDEO
+========================== */
+
+
+.video{
+
+    margin-top:40px;
+
+    text-align:center;
+
+}
+
+
+
+.video iframe{
+
+
+    width:100%;
+
+    max-width:900px;
+
+    height:500px;
+
+
+    border:none;
+
+
+    border-radius:15px;
+
+
+}
+
+
+
+/* ==========================
+        RESPONSIVE
+========================== */
+
+
+@media(max-width:800px){
+
+
+    .teams{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+    .tournament-header h1{
+
+        font-size:42px;
+
+    }
+
+
+
+    .video iframe{
+
+        height:250px;
+
+    }
+
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<header>
+
+<nav>
+
+
+<div class="nav-left">
+
+<a href="joueurs.html">Joueurs</a>
+
+<a href="fondateurs.html">Fondateurs</a>
+
+</div>
+
+
+
+<div class="nav-center">
+
+<a href="./">Accueil</a>
+
+</div>
+
+
+
+<div class="nav-right">
+
+<a href="tournois.html" class="active">Tournois</a>
+
+<a href="rocketleague.html">Rocket League</a>
+
+<a href="contact.html">Nous contacter</a>
+
+</div>
+
+
+</nav>
+
+</header>
+
+
+
+
+<main>
+
+
+
+<section class="tournament-header">
+
+
+<h1>Nos Tournois</h1>
+
+
+<p>
+Retrouvez les compétitions auxquelles SOA Esport
+participe ainsi que nos résultats.
+</p>
+
+
+</section>
+
+
+
+
 <section class="tournament-section reveal">
 
-<h2>Historique des tournois</h2>
+
+<h2>Historique</h2>
+
 
 
 <div class="tournament-card">
 
 
+
 <h3>Nom du tournoi</h3>
 
+
 <p class="date">
-📅 15 Mars 2026
+📅 Date du tournoi
 </p>
 
 
@@ -20,24 +441,28 @@
 
 <div class="team">
 
+
 <h4>SOA Esport</h4>
 
+
 <p>
-SOA Esport est une structure française Rocket League
+SOA Esport est une équipe française Rocket League
 composée de joueurs compétitifs ayant pour objectif
-de progresser et participer aux compétitions.
+de progresser et de participer aux compétitions.
 </p>
+
 
 
 <h5>Joueurs :</h5>
 
+
 <ul>
 
-<li>MLO77 - Grand Champion 1</li>
+<li>MLO77 - Rang</li>
 
-<li>Natbar70 - Grand Champion 1</li>
+<li>Natbar70 - Rang</li>
 
-<li>Golden_Pegasus - Champion 3</li>
+<li>Golden_Pegasus - Rang</li>
 
 </ul>
 
@@ -54,8 +479,8 @@ de progresser et participer aux compétitions.
 
 
 <p>
-Résumé de l'équipe adverse :
-historique, niveau, performances
+Présentation de l'équipe adverse :
+niveau, expérience, performances
 et style de jeu.
 </p>
 
@@ -84,11 +509,14 @@ et style de jeu.
 
 <div class="result">
 
+
 <h4>Résultat</h4>
 
+
 <p>
-SOA Esport 3 - 2 Équipe adverse
+SOA Esport 0 - 0 Équipe adverse
 </p>
+
 
 </div>
 
@@ -97,10 +525,92 @@ SOA Esport 3 - 2 Équipe adverse
 
 <div class="video">
 
+
 <iframe
+
 src="https://www.youtube.com/embed/VIDEO_ID"
+
 allowfullscreen>
+
 </iframe>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<section class="tournament-section reveal">
+
+
+<h2>Prochains tournois</h2>
+
+
+<div class="tournament-card">
+
+
+<h3>Nom du futur tournoi</h3>
+
+
+<p class="date">
+📅 Date prévue
+</p>
+
+
+<div class="teams">
+
+
+<div class="team">
+
+
+<h4>SOA Esport</h4>
+
+
+<p>
+Roster prévu pour la compétition.
+</p>
+
+
+<h5>Joueurs :</h5>
+
+
+<ul>
+
+<li>Joueur - Rang</li>
+
+<li>Joueur - Rang</li>
+
+<li>Joueur - Rang</li>
+
+</ul>
+
+
+</div>
+
+
+
+<div class="team">
+
+
+<h4>Adversaire</h4>
+
+
+<p>
+Équipe participante.
+</p>
+
+
+</div>
+
 
 </div>
 
@@ -109,4 +619,41 @@ allowfullscreen>
 
 
 </section>
+
+
+
+
+</main>
+
+
+
+
+
+<footer>
+
+<img src="images/SOA_logo_gris.jpg" alt="SOA">
+
+
+<h3>SOA ESPORT</h3>
+
+
+<p>
+© 2026 SOA Esport - Tous droits réservés.
+</p>
+
+
+</footer>
+
+
+
+
+<script src="js/script.js"></script>
+
+<script src="js/animations.js"></script>
+
+
+</body>
+
+
+</html>
 ```
