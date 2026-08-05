@@ -46,58 +46,64 @@ const roles = {
         weight:1
     },
 
+    CoFondateur:{
+        name:"Co-Fondateur",
+        color:"#AD9B47",
+        weight:2
+    },
+
 
     Secretaire:{
         name:"Secrétaire",
         color:"##ABDED3",
-        weight:2
+        weight:3
     },
 
 
     JoueurSOA:{
         name:"Joueur-SOA",
         color:"#DE9514",
-        weight:3
+        weight:4
     },
 
 
     JoueurEspoirSOA:{
         name:"Creator",
         color:"#2CC789",
-        weight:4
+        weight:5
     },
 
 
     Moderateur:{
         name:"Modérateur",
         color:"#0F75BF",
-        weight:5
+        weight:6
     },
 
 
     MiniaMaker:{
         name:"MiniaMaker",
         color:"#BF0F76",
-        weight:6
+        weight:7
     },
 
 
     Animateur:{
         name:"Animateur",
         color:"#66D90F",
-        weight:7
+        weight:8
     },
 
     CreateurDeContenu:{
         name:"Créateur-de-contenu",
         color:"#8A2984",
-        weight:8
+        weight:9
     },
 
     Membre:{
         name:"Membre",
         color:"##DBDBDB",
-        weight:9
+        weight:10
     },
 
 };
