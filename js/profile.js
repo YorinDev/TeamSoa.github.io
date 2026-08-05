@@ -2,15 +2,12 @@ import { auth, db } from "./firebase.js";
 
 
 import {
-
     onAuthStateChanged,
     signOut
-
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
-
     doc,
     getDoc,
     updateDoc,
@@ -18,7 +15,6 @@ import {
     query,
     where,
     getDocs
-
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
@@ -35,7 +31,6 @@ const verified = document.getElementById("profileVerified");
 const date = document.getElementById("profileDate");
 
 const logout = document.getElementById("logoutButton");
-
 
 
 
@@ -81,16 +76,18 @@ document.getElementById("cancelAvatar");
 
 
 
-let currentUser;
+let currentUser = null;
 
-let cropper;
-
-
+let cropper = null;
 
 
 
 
-// CHARGEMENT PROFIL
+
+
+
+
+// CHARGEMENT DU PROFIL
 
 
 onAuthStateChanged(auth, async(user)=>{
@@ -110,6 +107,18 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
+    // EMAIL FIREBASE
+
+    if(email){
+
+        email.textContent = user.email;
+
+    }
+
+
+
+
+
     const userDoc =
     await getDoc(
         doc(db,"users",user.uid)
@@ -125,35 +134,48 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-        avatar.src =
-        data.avatar ||
-        "images/default-avatar.png";
+        if(avatar){
+
+            avatar.src =
+            data.avatar ||
+            "images/default-avatar.png";
+
+        }
 
 
 
-        username.textContent =
-        data.pseudo || "Utilisateur";
+        if(username){
+
+            username.textContent =
+            data.pseudo ||
+            "Utilisateur";
+
+        }
 
 
 
-        email.textContent =
-        user.email;
+        if(role){
+
+            role.textContent =
+            data.role ||
+            "Member";
+
+        }
 
 
 
-        role.textContent =
-        data.role || "Member";
+        if(verified){
+
+            verified.textContent =
+            user.emailVerified
+            ? "Oui"
+            : "Non";
+
+        }
 
 
 
-        verified.textContent =
-        user.emailVerified
-        ? "Oui"
-        : "Non";
-
-
-
-        if(data.createdAt){
+        if(date && data.createdAt){
 
 
             date.textContent =
@@ -178,9 +200,14 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-// ========================
+
+
+// ======================
 // MODIFICATION PSEUDO
-// ========================
+// ======================
+
+
+if(editUsernameButton && usernameModal){
 
 
 editUsernameButton.addEventListener("click",()=>{
@@ -189,14 +216,22 @@ editUsernameButton.addEventListener("click",()=>{
     usernameModal.classList.add("active");
 
 
-    newUsername.value =
-    username.textContent;
+    if(newUsername){
+
+        newUsername.value =
+        username.textContent;
+
+    }
 
 
 });
 
 
+}
 
+
+
+if(cancelUsername && usernameModal){
 
 
 cancelUsername.addEventListener("click",()=>{
@@ -208,11 +243,21 @@ cancelUsername.addEventListener("click",()=>{
 });
 
 
+}
 
 
+
+
+
+if(saveUsername){
 
 
 saveUsername.addEventListener("click",async()=>{
+
+
+    if(!currentUser || !newUsername)
+    return;
+
 
 
     const pseudo =
@@ -222,6 +267,7 @@ saveUsername.addEventListener("click",async()=>{
 
     if(!pseudo)
     return;
+
 
 
 
@@ -255,10 +301,10 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-    result.forEach((doc)=>{
+    result.forEach((userDoc)=>{
 
 
-        if(doc.id !== currentUser.uid){
+        if(userDoc.id !== currentUser.uid){
 
             exists=true;
 
@@ -288,7 +334,6 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-
     await updateDoc(
 
         doc(
@@ -311,18 +356,26 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-    username.textContent =
-    pseudo;
+    if(username){
+
+        username.textContent =
+        pseudo;
+
+    }
 
 
 
-    usernameModal.classList.remove("active");
+    if(usernameModal){
 
+        usernameModal.classList.remove("active");
+
+    }
 
 
 });
 
 
+}
 
 
 
@@ -330,10 +383,14 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-// ========================
+
+
+// ======================
 // MODIFICATION AVATAR
-// ========================
+// ======================
 
+
+if(avatarContainer && avatarModal){
 
 
 avatarContainer.addEventListener("click",()=>{
@@ -345,9 +402,13 @@ avatarContainer.addEventListener("click",()=>{
 });
 
 
+}
 
 
 
+
+
+if(cancelAvatar){
 
 
 cancelAvatar.addEventListener("click",()=>{
@@ -368,9 +429,16 @@ cancelAvatar.addEventListener("click",()=>{
 });
 
 
+}
 
 
 
+
+
+
+
+
+if(avatarInput){
 
 
 avatarInput.addEventListener("change",(event)=>{
@@ -386,22 +454,6 @@ avatarInput.addEventListener("change",(event)=>{
 
 
 
-
-    if(!file.type.startsWith("image/")){
-
-
-        alert(
-        "Veuillez choisir une image."
-        );
-
-
-        return;
-
-
-    }
-
-
-
     const reader =
     new FileReader();
 
@@ -412,6 +464,7 @@ avatarInput.addEventListener("change",(event)=>{
 
         avatarPreview.src =
         reader.result;
+
 
 
 
@@ -455,18 +508,24 @@ avatarInput.addEventListener("change",(event)=>{
 });
 
 
+}
 
 
 
 
+
+
+
+
+
+if(saveAvatar){
 
 
 saveAvatar.addEventListener("click",async()=>{
 
 
-    if(!cropper)
+    if(!cropper || !currentUser)
     return;
-
 
 
 
@@ -481,14 +540,11 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
-
-
     const image =
     canvas.toDataURL(
         "image/jpeg",
         0.85
     );
-
 
 
 
@@ -512,9 +568,11 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+    if(avatar){
 
-    avatar.src =
-    image;
+        avatar.src=image;
+
+    }
 
 
 
@@ -531,6 +589,7 @@ saveAvatar.addEventListener("click",async()=>{
 });
 
 
+}
 
 
 
@@ -538,9 +597,14 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
-// ========================
+
+
+// ======================
 // DECONNEXION
-// ========================
+// ======================
+
+
+if(logout){
 
 
 logout.addEventListener("click",async()=>{
@@ -549,8 +613,11 @@ logout.addEventListener("click",async()=>{
     await signOut(auth);
 
 
-    window.location.href=
+    window.location.href =
     "connexion.html";
 
 
 });
+
+
+}
