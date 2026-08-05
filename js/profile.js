@@ -27,25 +27,114 @@ import {
 
 // COULEURS DES RANGS
 
-const roleColors = {
+// ==========================
+// TABLE DES ROLES
+// ==========================
 
-    Owner:"#ff0000",
+const roles = {
 
-    "Co-Owner":"#ff7a00",
+    Owner:{
+        name:"Owner",
+        color:"#ff0000",
+        weight:0
+    },
 
-    Manager:"#9b59b6",
 
-    Coach:"#3498db",
+    "Co-Owner":{
+        name:"Co-Owner",
+        color:"#ff7a00",
+        weight:1
+    },
 
-    Player:"#2ecc71",
 
-    Creator:"#ff66cc",
+    Manager:{
+        name:"Manager",
+        color:"#9b59b6",
+        weight:2
+    },
 
-    Moderator:"#00ffff",
 
-    Member:"#aaaaaa"
+    Coach:{
+        name:"Coach",
+        color:"#3498db",
+        weight:3
+    },
+
+
+    Creator:{
+        name:"Creator",
+        color:"#ff66cc",
+        weight:4
+    },
+
+
+    Moderator:{
+        name:"Moderator",
+        color:"#00ffff",
+        weight:5
+    },
+
+
+    Player:{
+        name:"Player",
+        color:"#2ecc71",
+        weight:6
+    },
+
+
+    Member:{
+        name:"Member",
+        color:"#aaaaaa",
+        weight:7
+    }
 
 };
+
+
+
+
+// ==========================
+// Récupérer les informations d'un rôle
+// ==========================
+
+function getRoleData(roleName){
+
+
+    return roles[roleName] || roles.Member;
+
+
+}
+
+
+
+
+// ==========================
+// Trier une liste de comptes
+// Plus petit weight = plus haut
+// ==========================
+
+function sortUsersByRole(users){
+
+
+    return users.sort((a,b)=>{
+
+
+        const roleA =
+        getRoleData(a.role).weight;
+
+
+        const roleB =
+        getRoleData(b.role).weight;
+
+
+
+        return roleA - roleB;
+
+
+    });
+
+
+}
 
 
 
@@ -234,14 +323,15 @@ onAuthStateChanged(auth, async(user)=>{
             data.role ||
             "Member";
 
+            const roleInfo =
+            getRoleData(userRole);
 
             role.textContent =
-            userRole;
+            roleInfo.name;
 
 
             role.style.color =
-            roleColors[userRole] ||
-            "#aaaaaa";
+            roleInfo.color;
 
 
         }
