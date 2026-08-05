@@ -15,7 +15,6 @@
 .network-header{
 
     text-align:center;
-
     padding-top:160px;
 
 }
@@ -23,7 +22,6 @@
 .network-header h1{
 
     font-size:60px;
-
     color:#FF7A00;
 
 }
@@ -31,45 +29,28 @@
 .network-header p{
 
     color:#C9CED6;
-
     font-size:18px;
-
     margin-top:20px;
 
 }
 
-
-
-
 .networks{
 
-    max-width:1200px;
-
+    max-width:1300px;
     margin:70px auto;
-
     display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:40px;
+    grid-template-columns:repeat(3,1fr);
+    gap:35px;
 
 }
-
-
-
 
 .network-card{
 
     background:rgba(255,122,0,.04);
-
     border:1px solid rgba(255,122,0,.2);
-
-    border-radius:25px;
-
-    padding:40px;
-
+    border-radius:22px;
+    padding:35px;
     text-align:center;
-
     transition:.35s;
 
 }
@@ -77,9 +58,7 @@
 .network-card:hover{
 
     transform:translateY(-10px);
-
     border-color:#FF7A00;
-
     box-shadow:0 0 40px rgba(255,122,0,.3);
 
 }
@@ -87,9 +66,7 @@
 .network-card h2{
 
     color:#FF7A00;
-
-    font-size:38px;
-
+    font-size:34px;
     margin-bottom:20px;
 
 }
@@ -97,9 +74,7 @@
 .network-card p{
 
     color:#C9CED6;
-
     line-height:1.8;
-
     margin-bottom:25px;
 
 }
@@ -107,33 +82,34 @@
 .network-card a{
 
     display:inline-block;
-
-    background:#FF7A00;
-
-    color:white;
-
     text-decoration:none;
-
+    color:white;
+    background:#FF7A00;
     padding:14px 30px;
-
     border-radius:10px;
-
-    font-weight:600;
-
     transition:.3s;
+    font-weight:600;
 
 }
 
 .network-card a:hover{
 
     background:#FFA33A;
+    transform:scale(1.05);
 
 }
 
+@media(max-width:1000px){
 
+.networks{
 
+grid-template-columns:repeat(2,1fr);
 
-@media(max-width:900px){
+}
+
+}
+
+@media(max-width:700px){
 
 .networks{
 
@@ -162,9 +138,7 @@ font-size:42px;
 <div class="nav-left">
 
 <a href="joueurs.html">Joueurs</a>
-
 <a href="reseaux.html" class="active">Nos réseaux</a>
-
 <a href="fondateurs.html">Fondateurs</a>
 
 </div>
@@ -178,9 +152,7 @@ font-size:42px;
 <div class="nav-right">
 
 <a href="tournois.html">Tournois</a>
-
-<a href="actualites.html">Actualitées</a>
-
+<a href="actualites.html">Actualités</a>
 <a href="contact.html">Nous contacter</a>
 
 </div>
@@ -197,7 +169,7 @@ font-size:42px;
 
 <p>
 
-Retrouvez SOA Esport sur nos différentes plateformes.
+Retrouvez SOA Esport sur toutes nos plateformes officielles.
 
 </p>
 
@@ -211,14 +183,13 @@ Retrouvez SOA Esport sur nos différentes plateformes.
 
 <p>
 
-Rejoignez notre serveur Discord pour discuter avec la communauté,
-suivre les annonces et participer au recrutement.
+Rejoignez notre communauté Discord et échangez avec les joueurs.
 
 </p>
 
 <a href="https://discord.gg/ZFArsHpraJ" target="_blank">
 
-Rejoindre le Discord
+Rejoindre
 
 </a>
 
@@ -226,17 +197,17 @@ Rejoindre le Discord
 
 <div class="network-card">
 
-<h2>🎥 Twitch</h2>
+<h2>🎮 Twitch</h2>
 
 <p>
 
-Suivez nos streams, compétitions et événements en direct.
+Suivez nos lives, entraînements et compétitions.
 
 </p>
 
-<a href="#">
+<a href="https://www.twitch.tv/teamsoaoff" target="_blank">
 
-Bientôt disponible
+Voir la chaîne
 
 </a>
 
@@ -248,13 +219,49 @@ Bientôt disponible
 
 <p>
 
-Retrouvez nos vidéos, meilleurs moments et présentations.
+Découvrez nos vidéos, highlights et présentations.
 
 </p>
 
-<a href="#">
+<a href="https://www.youtube.com/@TeamSOAoff" target="_blank">
 
-Bientôt disponible
+Voir la chaîne
+
+</a>
+
+</div>
+
+<div class="network-card">
+
+<h2>📷 Instagram</h2>
+
+<p>
+
+Suivez les annonces et les coulisses de SOA Esport.
+
+</p>
+
+<a href="https://www.instagram.com/teamsoaoff/" target="_blank">
+
+Suivre
+
+</a>
+
+</div>
+
+<div class="network-card">
+
+<h2>❌ X</h2>
+
+<p>
+
+Retrouvez toutes les actualités de la structure.
+
+</p>
+
+<a href="https://x.com/TeamSOAoff" target="_blank">
+
+Voir le profil
 
 </a>
 
@@ -266,13 +273,13 @@ Bientôt disponible
 
 <p>
 
-Découvrez nos meilleurs clips et moments forts.
+Les meilleurs clips, actions et moments forts de SOA Esport.
 
 </p>
 
-<a href="#">
+<a href="https://www.tiktok.com/@soa2085" target="_blank">
 
-Bientôt disponible
+Voir le compte
 
 </a>
 
@@ -288,18 +295,12 @@ Bientôt disponible
 
 <h3>SOA ESPORT</h3>
 
-<p>
-
-© 2026 SOA Esport - Tous droits réservés.
-
-</p>
+<p>© 2026 SOA Esport - Tous droits réservés.</p>
 
 </footer>
 
 <script src="js/script.js"></script>
-
 <script src="js/animations.js"></script>
 
 </body>
-
 </html>
