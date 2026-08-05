@@ -84,3 +84,48 @@
     background:#ff7b00;
 
 }
+
+/* Protection contre les styles globaux du site */
+
+#account-container img{
+
+    width:46px !important;
+
+    height:46px !important;
+
+    max-width:none !important;
+
+    object-fit:cover;
+
+}
+
+
+#account-container .account{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+#account-container #accountButton{
+
+    width:46px !important;
+
+    height:46px !important;
+
+    padding:0;
+
+    overflow:hidden;
+
+}
+
+
+#account-container .account-menu img{
+
+    width:45px !important;
+
+    height:45px !important;
+
+}
