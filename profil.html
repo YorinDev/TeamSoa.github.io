@@ -53,7 +53,9 @@ Accueil
 <a href="actualites.html">Actualités</a>
 <a href="contact.html">Nous contacter</a>
 
+
 <div id="account-container"></div>
+
 
 </div>
 
@@ -66,6 +68,7 @@ Accueil
 
 
 
+
 <main class="profile-page">
 
 
@@ -73,11 +76,13 @@ Accueil
 
 
 
-<img 
+<img
 id="profileAvatar"
 src="images/default-avatar.png"
 alt="Avatar"
 class="profile-avatar">
+
+
 
 
 
@@ -86,6 +91,7 @@ class="profile-avatar">
 Utilisateur
 
 </h1>
+
 
 
 
@@ -98,12 +104,18 @@ email
 
 
 
+
+
+
 <div class="profile-info">
+
 
 
 <div>
 
-<span>Rôle</span>
+<span>
+Rôle
+</span>
 
 <strong id="profileRole">
 
@@ -115,9 +127,13 @@ Member
 
 
 
+
+
 <div>
 
-<span>Compte vérifié</span>
+<span>
+Compte vérifié
+</span>
 
 <strong id="profileVerified">
 
@@ -129,9 +145,13 @@ Oui
 
 
 
+
+
 <div>
 
-<span>Date d'inscription</span>
+<span>
+Date d'inscription
+</span>
 
 <strong id="profileDate">
 
@@ -142,17 +162,91 @@ Oui
 </div>
 
 
+
 </div>
 
 
 
 
 
-<button id="logoutButton" class="profile-button">
+
+
+
+<div class="profile-edit">
+
+
+<h2>
+
+Modifier mon profil
+
+</h2>
+
+
+
+
+<label>
+
+Pseudo
+
+</label>
+
+
+
+<input
+type="text"
+id="editUsername"
+placeholder="Votre pseudo">
+
+
+
+
+
+<label>
+
+Photo de profil
+
+</label>
+
+
+
+<input
+type="file"
+id="editAvatar"
+accept="image/png,image/jpeg,image/webp">
+
+
+
+
+
+
+<button
+id="saveProfile"
+class="profile-button">
+
+Sauvegarder
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<button
+id="logoutButton"
+class="profile-button">
 
 Déconnexion
 
 </button>
+
+
+
 
 
 
@@ -165,17 +259,32 @@ Déconnexion
 
 
 
+
+
 <footer>
+
 
 <img src="images/SOA_logo_gris.jpg" alt="SOA">
 
-<h3>SOA ESPORT</h3>
+
+
+<h3>
+SOA ESPORT
+</h3>
+
+
 
 <p>
+
 © 2026 SOA Esport - Tous droits réservés.
+
 </p>
 
+
 </footer>
+
+
+
 
 
 
