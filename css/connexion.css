@@ -12,17 +12,21 @@
 
     align-items:center;
 
-    padding:170px 20px 100px;
+    padding:220px 20px 100px;
 
 }
 
+
+
 /* ==========================
-        CARTE
+        CONTAINER
 ========================== */
+
 
 .auth-container{
 
     width:100%;
+
     max-width:500px;
 
     background:rgba(255,122,0,.04);
@@ -35,15 +39,19 @@
 
     backdrop-filter:blur(18px);
 
-    box-shadow:0 0 45px rgba(255,122,0,.15);
+    box-shadow:
+    0 0 45px rgba(255,122,0,.15);
 
     animation:fadeUp .7s ease;
 
 }
 
+
+
 /* ==========================
         LOGO
 ========================== */
+
 
 .auth-logo{
 
@@ -52,6 +60,8 @@
     margin-bottom:35px;
 
 }
+
+
 
 .auth-logo img{
 
@@ -63,9 +73,9 @@
 
     object-fit:cover;
 
-    box-shadow:0 0 30px rgba(255,122,0,.25);
-
 }
+
+
 
 .auth-logo h1{
 
@@ -79,17 +89,20 @@
 
 }
 
-.auth-logo p{
 
-    margin-top:10px;
+
+.auth-logo p{
 
     color:#C9CED6;
 
 }
 
+
+
 /* ==========================
-        ONGLETS
+        TABS
 ========================== */
+
 
 .tabs{
 
@@ -105,6 +118,8 @@
 
 }
 
+
+
 .tabs button{
 
     flex:1;
@@ -113,25 +128,17 @@
 
     border:none;
 
-    background:transparent;
+    background:none;
 
     color:white;
 
     cursor:pointer;
 
-    font-size:16px;
-
     font-weight:600;
 
-    transition:.3s;
-
 }
 
-.tabs button:hover{
 
-    background:rgba(255,122,0,.15);
-
-}
 
 .tabs button.active{
 
@@ -139,9 +146,12 @@
 
 }
 
+
+
 /* ==========================
-        FORMULAIRE
+        FORM
 ========================== */
+
 
 .auth-form{
 
@@ -153,15 +163,20 @@
 
 }
 
+
+
 .auth-form.hidden{
 
     display:none;
 
 }
 
+
+
 /* ==========================
         INPUT
 ========================== */
+
 
 .input-group{
 
@@ -171,15 +186,17 @@
 
 }
 
+
+
 .input-group label{
 
     margin-bottom:8px;
 
     color:#FF7A00;
 
-    font-weight:600;
-
 }
+
+
 
 .input-group input{
 
@@ -193,13 +210,11 @@
 
     color:white;
 
-    font-size:15px;
-
     outline:none;
 
-    transition:.3s;
-
 }
+
+
 
 .input-group input:focus{
 
@@ -209,9 +224,12 @@
 
 }
 
+
+
 /* ==========================
-        BOUTON
+        BUTTON
 ========================== */
+
 
 .auth-button{
 
@@ -233,23 +251,22 @@
 
     cursor:pointer;
 
-    transition:.3s;
-
 }
+
+
 
 .auth-button:hover{
 
-    transform:translateY(-3px);
-
     background:#FFA33A;
-
-    box-shadow:0 10px 30px rgba(255,122,0,.35);
 
 }
 
+
+
 /* ==========================
-        LIENS
+        FORGOT
 ========================== */
+
 
 .forgot{
 
@@ -257,25 +274,22 @@
 
 }
 
+
+
 .forgot a{
 
     color:#FF7A00;
 
     text-decoration:none;
 
-    transition:.25s;
-
 }
 
-.forgot a:hover{
 
-    color:#FFA33A;
-
-}
 
 /* ==========================
         MESSAGE
 ========================== */
+
 
 .auth-message{
 
@@ -283,74 +297,59 @@
 
     text-align:center;
 
-    font-weight:600;
-
     color:#FF7A00;
 
-    min-height:22px;
-
 }
+
+
 
 /* ==========================
         ANIMATION
 ========================== */
 
+
 @keyframes fadeUp{
 
-    from{
 
-        opacity:0;
+from{
 
-        transform:translateY(40px);
+opacity:0;
 
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
+transform:translateY(40px);
 
 }
 
-/* ==========================
-        RESPONSIVE
-========================== */
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
 
 @media(max-width:650px){
 
+
 .auth-container{
 
-    padding:30px;
+padding:30px;
 
 }
 
-.auth-logo img{
-
-    width:90px;
-
-    height:90px;
-
-}
 
 .auth-logo h1{
 
-    font-size:30px;
+font-size:30px;
 
 }
 
-.tabs button{
-
-    font-size:15px;
-
-}
-
-.auth-button{
-
-    font-size:16px;
-
-}
 
 }
