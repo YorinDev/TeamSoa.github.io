@@ -101,7 +101,7 @@ function showMessage(text, error=false){
     if(!message) return;
 
 
-    message.textContent = text;
+    message.innerHTML = text;
 
 
     if(error){
@@ -132,16 +132,27 @@ registerForm.addEventListener("submit", async (e)=>{
 
 
 
-    const username = document.getElementById("registerUsername").value.trim();
+    const username = document
+    .getElementById("registerUsername")
+    .value
+    .trim();
 
 
-    const email = document.getElementById("registerEmail").value.trim();
+
+    const email = document
+    .getElementById("registerEmail")
+    .value
+    .trim();
 
 
-    const password = document.getElementById("registerPassword").value;
+
+    const password =
+    document.getElementById("registerPassword").value;
 
 
-    const confirm = document.getElementById("registerConfirm").value;
+
+    const confirm =
+    document.getElementById("registerConfirm").value;
 
 
 
@@ -175,10 +186,26 @@ registerForm.addEventListener("submit", async (e)=>{
 
 
 
+    if(username.length < 3){
+
+
+        showMessage(
+            "Le pseudo doit contenir au moins 3 caractères.",
+            true
+        );
+
+
+        return;
+
+    }
+
+
+
     try{
 
 
-        const userCredential = await createUserWithEmailAndPassword(
+        const userCredential =
+        await createUserWithEmailAndPassword(
 
             auth,
 
@@ -190,11 +217,10 @@ registerForm.addEventListener("submit", async (e)=>{
 
 
 
-        const user = userCredential.user;
+        const user =
+        userCredential.user;
 
 
-
-        // Création du profil Firestore
 
         await setDoc(
 
@@ -204,13 +230,15 @@ registerForm.addEventListener("submit", async (e)=>{
 
                 pseudo: username,
 
+                pseudoLower: username.toLowerCase(),
+
                 email: email,
 
                 avatar: "",
 
-                role: "member",
+                role: "Member",
 
-                verified: false,
+                verified:false,
 
                 createdAt: serverTimestamp()
 
@@ -220,15 +248,22 @@ registerForm.addEventListener("submit", async (e)=>{
 
 
 
-        // Envoi du mail de confirmation
-
         await sendEmailVerification(user);
 
 
 
-        showMessage(
-            "Compte créé ! Vérifie ton adresse e-mail."
-        );
+        showMessage(`
+
+            Compte créé avec succès !<br><br>
+
+            Un e-mail de vérification vient de vous être envoyé.<br><br>
+
+            Ouvrez votre boîte mail et cliquez sur le lien reçu afin d'activer votre compte.<br><br>
+
+            Si vous ne trouvez pas l'e-mail, pensez à vérifier votre dossier
+            <b>Spam / Courriers indésirables</b>.
+
+        `);
 
 
 
@@ -279,17 +314,21 @@ loginForm.addEventListener("submit", async(e)=>{
 
 
 
-    const email = document.getElementById("loginEmail").value.trim();
+    const email =
+    document.getElementById("loginEmail").value.trim();
 
 
-    const password = document.getElementById("loginPassword").value;
+
+    const password =
+    document.getElementById("loginPassword").value;
 
 
 
     try{
 
 
-        const result = await signInWithEmailAndPassword(
+        const result =
+        await signInWithEmailAndPassword(
 
             auth,
 
@@ -304,10 +343,17 @@ loginForm.addEventListener("submit", async(e)=>{
         if(result.user.emailVerified === false){
 
 
-            showMessage(
-                "Veuillez vérifier votre adresse e-mail.",
-                true
-            );
+            showMessage(`
+
+                Votre adresse e-mail n'est pas encore vérifiée.<br><br>
+
+                Consultez votre boîte mail et cliquez sur le lien de confirmation.<br><br>
+
+                Si vous ne trouvez pas le message, vérifiez votre dossier
+                <b>Spam / Courriers indésirables</b>.
+
+            `, true);
+
 
 
             return;
@@ -365,7 +411,9 @@ loginForm.addEventListener("submit", async(e)=>{
 // MOT DE PASSE OUBLIE
 // ==========================
 
-const forgotPassword = document.getElementById("forgotPassword");
+const forgotPassword =
+document.getElementById("forgotPassword");
+
 
 
 if(forgotPassword){
@@ -378,7 +426,8 @@ forgotPassword.addEventListener("click", async(e)=>{
 
 
 
-    const email = document.getElementById("loginEmail").value.trim();
+    const email =
+    document.getElementById("loginEmail").value.trim();
 
 
 
@@ -407,6 +456,7 @@ forgotPassword.addEventListener("click", async(e)=>{
             email
 
         );
+
 
 
         showMessage(
@@ -481,7 +531,7 @@ function getErrorMessage(code){
 
         case "auth/weak-password":
 
-            return "Mot de passe trop faible.";
+            return "Mot de passe trop faible (minimum 6 caractères).";
 
 
 
@@ -494,6 +544,12 @@ function getErrorMessage(code){
         case "auth/user-not-found":
 
             return "Utilisateur introuvable.";
+
+
+
+        case "auth/too-many-requests":
+
+            return "Trop de tentatives. Réessaie plus tard.";
 
 
 
