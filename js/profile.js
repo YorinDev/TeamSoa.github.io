@@ -104,7 +104,7 @@ const roles = {
         name:"Membre",
         color:"##DBDBDB",
         weight:10
-    },
+    }
 
 };
 
