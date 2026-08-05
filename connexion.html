@@ -9,6 +9,7 @@
 <title>SOA Esport | Connexion</title>
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/account.css">
 <link rel="stylesheet" href="css/connexion.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,11 +21,14 @@
 
 </head>
 
+
 <body>
+
 
 <header>
 
 <nav>
+
 
 <div class="nav-left">
 
@@ -34,11 +38,15 @@
 
 </div>
 
+
+
 <div class="nav-center">
 
 <a href="./">Accueil</a>
 
 </div>
+
+
 
 <div class="nav-right">
 
@@ -46,29 +54,50 @@
 <a href="actualites.html">Actualités</a>
 <a href="contact.html">Nous contacter</a>
 
+
 <div id="account-container"></div>
 
+
 </div>
+
 
 </nav>
 
 </header>
 
+
+
+
+
 <main class="auth-page">
+
 
 <div class="auth-container">
 
+
+
 <div class="auth-logo">
+
 
 <img src="images/SOA_logo_gris.jpg" alt="SOA Logo">
 
+
 <h1>SOA ESPORT</h1>
 
-<p>Connexion à votre compte</p>
+
+<p>
+Connexion à votre compte
+</p>
+
 
 </div>
 
+
+
+
+
 <div class="tabs">
+
 
 <button id="loginTab" class="active">
 
@@ -76,21 +105,33 @@ Connexion
 
 </button>
 
+
 <button id="registerTab">
 
 Inscription
 
 </button>
 
+
 </div>
 
-<!-- CONNEXION -->
+
+
+
 
 <form id="loginForm" class="auth-form">
 
+
+
 <div class="input-group">
 
-<label>Adresse e-mail</label>
+
+<label>
+
+Adresse e-mail
+
+</label>
+
 
 <input
 type="email"
@@ -98,11 +139,22 @@ id="loginEmail"
 placeholder="exemple@email.com"
 required>
 
+
 </div>
+
+
+
+
 
 <div class="input-group">
 
-<label>Mot de passe</label>
+
+<label>
+
+Mot de passe
+
+</label>
+
 
 <input
 type="password"
@@ -110,7 +162,12 @@ id="loginPassword"
 placeholder="********"
 required>
 
+
 </div>
+
+
+
+
 
 <button
 type="submit"
@@ -120,7 +177,12 @@ Se connecter
 
 </button>
 
+
+
+
+
 <p class="forgot">
+
 
 <a href="#" id="forgotPassword">
 
@@ -128,19 +190,35 @@ Mot de passe oublié ?
 
 </a>
 
+
 </p>
+
+
 
 </form>
 
-<!-- INSCRIPTION -->
 
-<form
-id="registerForm"
-class="auth-form hidden">
+
+
+
+
+
+
+<form id="registerForm" class="auth-form hidden">
+
+
+
+
 
 <div class="input-group">
 
-<label>Pseudo</label>
+
+<label>
+
+Pseudo
+
+</label>
+
 
 <input
 type="text"
@@ -148,11 +226,22 @@ id="registerUsername"
 placeholder="Votre pseudo"
 required>
 
+
 </div>
+
+
+
+
 
 <div class="input-group">
 
-<label>Adresse e-mail</label>
+
+<label>
+
+Adresse e-mail
+
+</label>
+
 
 <input
 type="email"
@@ -160,11 +249,22 @@ id="registerEmail"
 placeholder="exemple@email.com"
 required>
 
+
 </div>
+
+
+
+
 
 <div class="input-group">
 
-<label>Mot de passe</label>
+
+<label>
+
+Mot de passe
+
+</label>
+
 
 <input
 type="password"
@@ -172,11 +272,22 @@ id="registerPassword"
 placeholder="********"
 required>
 
+
 </div>
+
+
+
+
 
 <div class="input-group">
 
-<label>Confirmer le mot de passe</label>
+
+<label>
+
+Confirmer le mot de passe
+
+</label>
+
 
 <input
 type="password"
@@ -184,7 +295,12 @@ id="registerConfirm"
 placeholder="********"
 required>
 
+
 </div>
+
+
+
+
 
 <button
 type="submit"
@@ -194,23 +310,38 @@ Créer mon compte
 
 </button>
 
+
+
+
 </form>
 
-<div
-id="authMessage"
-class="auth-message">
+
+
+
+
+<div id="authMessage" class="auth-message"></div>
+
+
+
 
 </div>
 
-</div>
 
 </main>
 
+
+
+
+
+
 <footer>
+
 
 <img src="images/SOA_logo_gris.jpg" alt="Logo SOA">
 
+
 <h3>SOA ESPORT</h3>
+
 
 <p>
 
@@ -218,13 +349,21 @@ class="auth-message">
 
 </p>
 
+
 </footer>
+
+
+
+
+
 
 <script src="js/animations.js"></script>
 
 <script type="module" src="js/account.js"></script>
 
 <script type="module" src="js/auth.js"></script>
+
+
 
 </body>
 
