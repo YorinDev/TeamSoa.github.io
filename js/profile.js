@@ -24,57 +24,73 @@ import {
 
 
 
-// ELEMENTS HTML
+// ELEMENTS PROFIL
 
-const avatar =
-document.getElementById("profileAvatar");
+const avatar = document.getElementById("profileAvatar");
+const username = document.getElementById("profileUsername");
+const email = document.getElementById("profileEmail");
 
+const role = document.getElementById("profileRole");
+const verified = document.getElementById("profileVerified");
+const date = document.getElementById("profileDate");
 
-const username =
-document.getElementById("profileUsername");
-
-
-const email =
-document.getElementById("profileEmail");
-
-
-const role =
-document.getElementById("profileRole");
-
-
-const verified =
-document.getElementById("profileVerified");
-
-
-const date =
-document.getElementById("profileDate");
-
-
-const logout =
-document.getElementById("logoutButton");
+const logout = document.getElementById("logoutButton");
 
 
 
-const editUsername =
-document.getElementById("editUsername");
+
+// MODIFICATION PSEUDO
+
+const editUsernameButton =
+document.getElementById("editUsernameButton");
+
+const usernameModal =
+document.getElementById("usernameModal");
+
+const newUsername =
+document.getElementById("newUsername");
+
+const saveUsername =
+document.getElementById("saveUsername");
+
+const cancelUsername =
+document.getElementById("cancelUsername");
 
 
-const editAvatar =
-document.getElementById("editAvatar");
 
 
-const save =
-document.getElementById("saveProfile");
+// MODIFICATION AVATAR
+
+const avatarContainer =
+document.querySelector(".avatar-container");
+
+const avatarModal =
+document.getElementById("avatarModal");
+
+const avatarInput =
+document.getElementById("avatarInput");
+
+const avatarPreview =
+document.getElementById("avatarPreview");
+
+const saveAvatar =
+document.getElementById("saveAvatar");
+
+const cancelAvatar =
+document.getElementById("cancelAvatar");
 
 
 
 let currentUser;
 
+let cropper;
 
 
 
 
-// CHARGEMENT DU PROFIL
+
+
+// CHARGEMENT PROFIL
 
 
 onAuthStateChanged(auth, async(user)=>{
@@ -82,7 +98,7 @@ onAuthStateChanged(auth, async(user)=>{
 
     if(!user){
 
-        window.location.href = "connexion.html";
+        window.location.href="connexion.html";
 
         return;
 
@@ -117,11 +133,6 @@ onAuthStateChanged(auth, async(user)=>{
 
         username.textContent =
         data.pseudo || "Utilisateur";
-
-
-
-        editUsername.value =
-        data.pseudo || "";
 
 
 
@@ -164,264 +175,114 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-// REDIMENSION IMAGE + BASE64
-
-
-function resizeImage(file){
-
-
-    return new Promise((resolve,reject)=>{
-
-
-        const reader =
-        new FileReader();
 
 
 
-        reader.onload = ()=>{
+// ========================
+// MODIFICATION PSEUDO
+// ========================
 
 
-            const img =
-            new Image();
+editUsernameButton.addEventListener("click",()=>{
 
 
-
-            img.onload = ()=>{
-
-
-                const canvas =
-                document.createElement("canvas");
+    usernameModal.classList.add("active");
 
 
+    newUsername.value =
+    username.textContent;
 
-                canvas.width = 512;
 
-                canvas.height = 512;
+});
 
 
 
-                const ctx =
-                canvas.getContext("2d");
+
+
+cancelUsername.addEventListener("click",()=>{
+
+
+    usernameModal.classList.remove("active");
+
+
+});
 
 
 
-                ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    512,
-                    512
-                );
 
 
 
-                resolve(
-                    canvas.toDataURL(
-                        "image/jpeg",
-                        0.85
-                    )
-                );
+saveUsername.addEventListener("click",async()=>{
 
 
-            };
+    const pseudo =
+    newUsername.value.trim();
 
 
 
-            img.src =
-            reader.result;
-
-
-        };
+    if(!pseudo)
+    return;
 
 
 
-        reader.onerror =
-        reject;
+    const normalized =
+    pseudo.toLowerCase();
 
 
 
-        reader.readAsDataURL(file);
+
+    const check =
+    query(
+
+        collection(db,"users"),
+
+        where(
+            "pseudoLower",
+            "==",
+            normalized
+        )
+
+    );
+
+
+
+    const result =
+    await getDocs(check);
+
+
+
+    let exists=false;
+
+
+
+    result.forEach((doc)=>{
+
+
+        if(doc.id !== currentUser.uid){
+
+            exists=true;
+
+        }
 
 
     });
 
 
-}
 
 
 
+    if(exists){
 
 
-
-
-
-// SAUVEGARDE PROFIL
-
-
-save.addEventListener("click", async()=>{
-
-
-    if(!currentUser)
-    return;
-
-
-
-    let updateData = {};
-
-
-
-
-
-    // VERIFICATION PSEUDO
-
-
-    const newPseudo =
-    editUsername.value.trim();
-
-
-
-    if(newPseudo){
-
-
-
-        const normalizedPseudo =
-        newPseudo.toLowerCase();
-
-
-
-        const pseudoQuery =
-        query(
-            collection(db,"users"),
-            where("pseudoLower","==",normalizedPseudo)
+        alert(
+        "Ce pseudo est déjà utilisé."
         );
 
 
-
-        const pseudoSnapshot =
-        await getDocs(pseudoQuery);
-
-
-
-        let pseudoTaken = false;
-
-
-
-        pseudoSnapshot.forEach((userDoc)=>{
-
-
-            if(userDoc.id !== currentUser.uid){
-
-                pseudoTaken = true;
-
-            }
-
-
-        });
-
-
-
-
-        if(pseudoTaken){
-
-
-            alert(
-                "Ce pseudo est déjà utilisé."
-            );
-
-
-            return;
-
-
-        }
-
-
-
-        updateData.pseudo =
-        newPseudo;
-
-
-
-        updateData.pseudoLower =
-        normalizedPseudo;
+        return;
 
 
     }
-
-
-
-
-
-
-
-    // CHANGEMENT AVATAR
-
-
-    if(editAvatar.files.length > 0){
-
-
-
-        const file =
-        editAvatar.files[0];
-
-
-
-        if(file.size > 2 * 1024 * 1024){
-
-
-            alert(
-            "L'image est trop grande (maximum 2 Mo)."
-            );
-
-
-            return;
-
-
-        }
-
-
-
-
-
-        if(
-            ![
-                "image/png",
-                "image/jpeg",
-                "image/webp"
-            ]
-            .includes(file.type)
-        ){
-
-
-            alert(
-            "Format accepté : PNG, JPG ou WebP."
-            );
-
-
-            return;
-
-
-        }
-
-
-
-
-
-        const base64 =
-        await resizeImage(file);
-
-
-
-        updateData.avatar =
-        base64;
-
-
-
-        avatar.src =
-        base64;
-
-
-    }
-
 
 
 
@@ -436,7 +297,13 @@ save.addEventListener("click", async()=>{
             currentUser.uid
         ),
 
-        updateData
+        {
+
+            pseudo:pseudo,
+
+            pseudoLower:normalized
+
+        }
 
     );
 
@@ -444,21 +311,13 @@ save.addEventListener("click", async()=>{
 
 
 
-
-    if(updateData.pseudo){
-
-
-        username.textContent =
-        updateData.pseudo;
-
-
-    }
+    username.textContent =
+    pseudo;
 
 
 
-    alert(
-    "Profil mis à jour !"
-    );
+    usernameModal.classList.remove("active");
+
 
 
 });
@@ -470,7 +329,218 @@ save.addEventListener("click", async()=>{
 
 
 
+
+// ========================
+// MODIFICATION AVATAR
+// ========================
+
+
+
+avatarContainer.addEventListener("click",()=>{
+
+
+    avatarModal.classList.add("active");
+
+
+});
+
+
+
+
+
+
+
+cancelAvatar.addEventListener("click",()=>{
+
+
+    avatarModal.classList.remove("active");
+
+
+    if(cropper){
+
+        cropper.destroy();
+
+        cropper=null;
+
+    }
+
+
+});
+
+
+
+
+
+
+
+avatarInput.addEventListener("change",(event)=>{
+
+
+    const file =
+    event.target.files[0];
+
+
+
+    if(!file)
+    return;
+
+
+
+
+    if(!file.type.startsWith("image/")){
+
+
+        alert(
+        "Veuillez choisir une image."
+        );
+
+
+        return;
+
+
+    }
+
+
+
+    const reader =
+    new FileReader();
+
+
+
+    reader.onload=()=>{
+
+
+        avatarPreview.src =
+        reader.result;
+
+
+
+        if(cropper){
+
+            cropper.destroy();
+
+        }
+
+
+
+        cropper =
+        new Cropper(
+
+            avatarPreview,
+
+            {
+
+                aspectRatio:1,
+
+                viewMode:1,
+
+                dragMode:"move",
+
+                autoCropArea:1,
+
+                background:false
+
+            }
+
+        );
+
+
+    };
+
+
+
+    reader.readAsDataURL(file);
+
+
+});
+
+
+
+
+
+
+
+
+saveAvatar.addEventListener("click",async()=>{
+
+
+    if(!cropper)
+    return;
+
+
+
+
+    const canvas =
+    cropper.getCroppedCanvas({
+
+        width:512,
+
+        height:512
+
+    });
+
+
+
+
+
+    const image =
+    canvas.toDataURL(
+        "image/jpeg",
+        0.85
+    );
+
+
+
+
+
+    await updateDoc(
+
+        doc(
+            db,
+            "users",
+            currentUser.uid
+        ),
+
+        {
+
+            avatar:image
+
+        }
+
+    );
+
+
+
+
+
+    avatar.src =
+    image;
+
+
+
+    avatarModal.classList.remove("active");
+
+
+
+    cropper.destroy();
+
+    cropper=null;
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// ========================
 // DECONNEXION
+// ========================
 
 
 logout.addEventListener("click",async()=>{
@@ -479,7 +549,7 @@ logout.addEventListener("click",async()=>{
     await signOut(auth);
 
 
-    window.location.href =
+    window.location.href=
     "connexion.html";
 
 
