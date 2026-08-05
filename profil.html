@@ -8,13 +8,23 @@
 
 <title>SOA Esport | Profil</title>
 
+
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/account.css">
 <link rel="stylesheet" href="css/profil.css">
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+
 <link rel="icon" href="images/SOA_logo_gris.jpg">
 
+
 </head>
+
 
 
 <body>
@@ -35,6 +45,8 @@
 
 
 
+
+
 <div class="nav-center">
 
 <a href="./">
@@ -47,10 +59,14 @@ Accueil
 
 
 
+
+
 <div class="nav-right">
 
 <a href="tournois.html">Tournois</a>
+
 <a href="actualites.html">Actualités</a>
+
 <a href="contact.html">Nous contacter</a>
 
 
@@ -62,7 +78,9 @@ Accueil
 
 </nav>
 
+
 </header>
+
 
 
 
@@ -76,6 +94,11 @@ Accueil
 
 
 
+
+
+<div class="avatar-container">
+
+
 <img
 id="profileAvatar"
 src="images/default-avatar.png"
@@ -84,6 +107,23 @@ class="profile-avatar">
 
 
 
+<div class="avatar-edit">
+
+✏️
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="username-container">
 
 
 <h1 id="profileUsername">
@@ -94,12 +134,27 @@ Utilisateur
 
 
 
+<button id="editUsernameButton">
+
+✏️
+
+</button>
+
+
+
+</div>
+
+
+
+
+
 
 <p id="profileEmail">
 
 email
 
 </p>
+
 
 
 
@@ -117,11 +172,13 @@ email
 Rôle
 </span>
 
+
 <strong id="profileRole">
 
 Member
 
 </strong>
+
 
 </div>
 
@@ -135,11 +192,13 @@ Member
 Compte vérifié
 </span>
 
+
 <strong id="profileVerified">
 
 Oui
 
 </strong>
+
 
 </div>
 
@@ -153,83 +212,21 @@ Oui
 Date d'inscription
 </span>
 
+
 <strong id="profileDate">
 
 -
 
 </strong>
 
-</div>
-
-
 
 </div>
 
 
 
-
-
-
-
-
-<div class="profile-edit">
-
-
-<h2>
-
-Modifier mon profil
-
-</h2>
-
-
-
-
-<label>
-
-Pseudo
-
-</label>
-
-
-
-<input
-type="text"
-id="editUsername"
-placeholder="Votre pseudo">
-
-
-
-
-
-<label>
-
-Photo de profil
-
-</label>
-
-
-
-<input
-type="file"
-id="editAvatar"
-accept="image/png,image/jpeg,image/webp">
-
-
-
-
-
-
-<button
-id="saveProfile"
-class="profile-button">
-
-Sauvegarder
-
-</button>
-
-
-
 </div>
+
+
 
 
 
@@ -241,7 +238,9 @@ Sauvegarder
 id="logoutButton"
 class="profile-button">
 
+
 Déconnexion
+
 
 </button>
 
@@ -261,6 +260,135 @@ Déconnexion
 
 
 
+
+
+<!-- MODIFICATION PSEUDO -->
+
+
+<div class="modal" id="usernameModal">
+
+
+<div class="modal-content">
+
+
+<h2>
+
+Modifier le pseudo
+
+</h2>
+
+
+
+<input
+id="newUsername"
+type="text"
+placeholder="Nouveau pseudo">
+
+
+
+
+
+<button id="cancelUsername">
+
+Annuler
+
+</button>
+
+
+
+<button id="saveUsername">
+
+Sauvegarder
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- MODIFICATION AVATAR -->
+
+
+<div class="modal" id="avatarModal">
+
+
+<div class="modal-content">
+
+
+<h2>
+
+Modifier la photo
+
+</h2>
+
+
+
+
+
+<input
+type="file"
+id="avatarInput"
+accept="image/*">
+
+
+
+
+
+<div class="crop-area">
+
+
+<img
+id="avatarPreview">
+
+
+</div>
+
+
+
+
+
+
+<button id="cancelAvatar">
+
+Annuler
+
+</button>
+
+
+
+<button id="saveAvatar">
+
+Sauvegarder
+
+</button>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
 <footer>
 
 
@@ -269,8 +397,11 @@ Déconnexion
 
 
 <h3>
+
 SOA ESPORT
+
 </h3>
+
 
 
 
@@ -292,6 +423,7 @@ SOA ESPORT
 <script type="module" src="js/profile.js"></script>
 
 <script type="module" src="js/account.js"></script>
+
 
 
 </body>
