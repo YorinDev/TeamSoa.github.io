@@ -2,51 +2,98 @@ import { auth, db } from "./firebase.js";
 
 
 import {
+
     onAuthStateChanged,
     signOut
+
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
+
     doc,
     getDoc,
     updateDoc,
     collection,
     query,
     where,
-    getDocs
+    getDocs,
+    serverTimestamp
+
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+
+
+// COULEURS DES RANGS
+
+const roleColors = {
+
+    Owner:"#ff0000",
+
+    "Co-Owner":"#ff7a00",
+
+    Manager:"#9b59b6",
+
+    Coach:"#3498db",
+
+    Player:"#2ecc71",
+
+    Creator:"#ff66cc",
+
+    Moderator:"#00ffff",
+
+    Member:"#aaaaaa"
+
+};
+
+
 
 
 
 
 // ELEMENTS PROFIL
 
+
 const avatar = document.getElementById("profileAvatar");
+
 const username = document.getElementById("profileUsername");
+
 const email = document.getElementById("profileEmail");
 
+
 const role = document.getElementById("profileRole");
+
 const verified = document.getElementById("profileVerified");
+
 const date = document.getElementById("profileDate");
+
 
 const logout = document.getElementById("logoutButton");
 
 
 
+
+
+
 // MODIFICATION PSEUDO
+
 
 const editUsernameButton =
 document.getElementById("editUsernameButton");
 
+
 const usernameModal =
 document.getElementById("usernameModal");
+
 
 const newUsername =
 document.getElementById("newUsername");
 
+
 const saveUsername =
 document.getElementById("saveUsername");
+
 
 const cancelUsername =
 document.getElementById("cancelUsername");
@@ -54,25 +101,37 @@ document.getElementById("cancelUsername");
 
 
 
+
+
+
+
 // MODIFICATION AVATAR
+
 
 const avatarContainer =
 document.querySelector(".avatar-container");
 
+
 const avatarModal =
 document.getElementById("avatarModal");
+
 
 const avatarInput =
 document.getElementById("avatarInput");
 
+
 const avatarPreview =
 document.getElementById("avatarPreview");
+
 
 const saveAvatar =
 document.getElementById("saveAvatar");
 
+
 const cancelAvatar =
 document.getElementById("cancelAvatar");
+
+
 
 
 
@@ -87,7 +146,10 @@ let cropper = null;
 
 
 
-// CHARGEMENT DU PROFIL
+
+// ========================
+// CHARGEMENT PROFIL
+// ========================
 
 
 onAuthStateChanged(auth, async(user)=>{
@@ -103,26 +165,31 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-    currentUser = user;
+    currentUser=user;
 
 
-
-    // EMAIL FIREBASE
 
     if(email){
 
-        email.textContent = user.email;
+        email.textContent=user.email;
 
     }
 
 
 
 
-
     const userDoc =
     await getDoc(
-        doc(db,"users",user.uid)
+
+        doc(
+            db,
+            "users",
+            user.uid
+        )
+
     );
+
+
 
 
 
@@ -131,6 +198,7 @@ onAuthStateChanged(auth, async(user)=>{
 
         const data =
         userDoc.data();
+
 
 
 
@@ -144,6 +212,8 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
+
+
         if(username){
 
             username.textContent =
@@ -154,24 +224,48 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
+
+
+
         if(role){
 
-            role.textContent =
+
+            const userRole =
             data.role ||
             "Member";
+
+
+            role.textContent =
+            userRole;
+
+
+            role.style.color =
+            roleColors[userRole] ||
+            "#aaaaaa";
+
 
         }
 
 
 
+
+
+
+
         if(verified){
+
 
             verified.textContent =
             user.emailVerified
             ? "Oui"
             : "Non";
 
+
         }
+
+
+
+
 
 
 
@@ -187,6 +281,7 @@ onAuthStateChanged(auth, async(user)=>{
         }
 
 
+
     }
 
 
@@ -202,12 +297,13 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-// ======================
+// ========================
 // MODIFICATION PSEUDO
-// ======================
+// ========================
 
 
-if(editUsernameButton && usernameModal){
+
+if(editUsernameButton){
 
 
 editUsernameButton.addEventListener("click",()=>{
@@ -216,12 +312,8 @@ editUsernameButton.addEventListener("click",()=>{
     usernameModal.classList.add("active");
 
 
-    if(newUsername){
-
-        newUsername.value =
-        username.textContent;
-
-    }
+    newUsername.value =
+    username.textContent;
 
 
 });
@@ -231,7 +323,10 @@ editUsernameButton.addEventListener("click",()=>{
 
 
 
-if(cancelUsername && usernameModal){
+
+
+
+if(cancelUsername){
 
 
 cancelUsername.addEventListener("click",()=>{
@@ -249,19 +344,99 @@ cancelUsername.addEventListener("click",()=>{
 
 
 
+
+
 if(saveUsername){
 
 
 saveUsername.addEventListener("click",async()=>{
 
 
-    if(!currentUser || !newUsername)
+    if(!currentUser)
     return;
+
+
+
+
+    const userData =
+    await getDoc(
+
+        doc(
+            db,
+            "users",
+            currentUser.uid
+        )
+
+    );
+
+
+
+
+
+    if(userData.exists()){
+
+
+        const lastChange =
+        userData.data().lastPseudoChange;
+
+
+
+        if(lastChange){
+
+
+            const difference =
+            Date.now()
+            -
+            lastChange.toMillis();
+
+
+
+
+            if(difference < 2*60*60*1000){
+
+
+
+                const minutes =
+                Math.ceil(
+
+                    (2*60*60*1000-difference)
+                    /
+                    60000
+
+                );
+
+
+
+                alert(
+
+                    "Vous devez attendre encore "
+                    +
+                    minutes
+                    +
+                    " minutes avant de changer votre pseudo."
+
+                );
+
+
+                return;
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+
 
 
 
     const pseudo =
     newUsername.value.trim();
+
 
 
 
@@ -271,8 +446,11 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
+
     const normalized =
     pseudo.toLowerCase();
+
+
 
 
 
@@ -292,8 +470,12 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
+
+
+
     const result =
     await getDocs(check);
+
 
 
 
@@ -301,10 +483,11 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-    result.forEach((userDoc)=>{
+
+    result.forEach((doc)=>{
 
 
-        if(userDoc.id !== currentUser.uid){
+        if(doc.id !== currentUser.uid){
 
             exists=true;
 
@@ -317,11 +500,13 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
+
+
     if(exists){
 
 
         alert(
-        "Ce pseudo est déjà utilisé."
+            "Ce pseudo est déjà utilisé."
         );
 
 
@@ -329,6 +514,8 @@ saveUsername.addEventListener("click",async()=>{
 
 
     }
+
+
 
 
 
@@ -346,7 +533,10 @@ saveUsername.addEventListener("click",async()=>{
 
             pseudo:pseudo,
 
-            pseudoLower:normalized
+            pseudoLower:normalized,
+
+            lastPseudoChange:
+            serverTimestamp()
 
         }
 
@@ -356,20 +546,13 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-    if(username){
-
-        username.textContent =
-        pseudo;
-
-    }
+    username.textContent =
+    pseudo;
 
 
 
-    if(usernameModal){
+    usernameModal.classList.remove("active");
 
-        usernameModal.classList.remove("active");
-
-    }
 
 
 });
@@ -385,12 +568,13 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-// ======================
+// ========================
 // MODIFICATION AVATAR
-// ======================
+// ========================
 
 
-if(avatarContainer && avatarModal){
+
+if(avatarContainer){
 
 
 avatarContainer.addEventListener("click",()=>{
@@ -408,6 +592,8 @@ avatarContainer.addEventListener("click",()=>{
 
 
 
+
+
 if(cancelAvatar){
 
 
@@ -415,6 +601,7 @@ cancelAvatar.addEventListener("click",()=>{
 
 
     avatarModal.classList.remove("active");
+
 
 
     if(cropper){
@@ -454,16 +641,38 @@ avatarInput.addEventListener("change",(event)=>{
 
 
 
+
+    if(!file.type.startsWith("image/")){
+
+
+        alert(
+            "Veuillez choisir une image."
+        );
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
     const reader =
     new FileReader();
+
 
 
 
     reader.onload=()=>{
 
 
+
         avatarPreview.src =
         reader.result;
+
 
 
 
@@ -473,6 +682,9 @@ avatarInput.addEventListener("change",(event)=>{
             cropper.destroy();
 
         }
+
+
+
 
 
 
@@ -498,11 +710,15 @@ avatarInput.addEventListener("change",(event)=>{
         );
 
 
+
     };
 
 
 
+
+
     reader.readAsDataURL(file);
+
 
 
 });
@@ -529,6 +745,92 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+
+
+
+
+    const userData =
+    await getDoc(
+
+        doc(
+            db,
+            "users",
+            currentUser.uid
+        )
+
+    );
+
+
+
+
+
+    if(userData.exists()){
+
+
+        const lastChange =
+        userData.data().lastAvatarChange;
+
+
+
+
+
+        if(lastChange){
+
+
+            const difference =
+            Date.now()
+            -
+            lastChange.toMillis();
+
+
+
+
+
+            if(difference < 12*60*60*1000){
+
+
+
+                const hours =
+                Math.ceil(
+
+                    (12*60*60*1000-difference)
+                    /
+                    3600000
+
+                );
+
+
+
+                alert(
+
+                    "Vous devez attendre encore "
+                    +
+                    hours
+                    +
+                    " heures avant de changer votre photo."
+
+                );
+
+
+
+                return;
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
     const canvas =
     cropper.getCroppedCanvas({
 
@@ -540,11 +842,21 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+
+
+
+
     const image =
     canvas.toDataURL(
+
         "image/jpeg",
+
         0.85
+
     );
+
+
+
 
 
 
@@ -559,7 +871,10 @@ saveAvatar.addEventListener("click",async()=>{
 
         {
 
-            avatar:image
+            avatar:image,
+
+            lastAvatarChange:
+            serverTimestamp()
 
         }
 
@@ -568,11 +883,11 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
-    if(avatar){
 
-        avatar.src=image;
 
-    }
+
+    avatar.src=image;
+
 
 
 
@@ -580,7 +895,9 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+
     cropper.destroy();
+
 
     cropper=null;
 
@@ -599,9 +916,10 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
-// ======================
+// ========================
 // DECONNEXION
-// ======================
+// ========================
+
 
 
 if(logout){
@@ -613,8 +931,10 @@ logout.addEventListener("click",async()=>{
     await signOut(auth);
 
 
+
     window.location.href =
     "connexion.html";
+
 
 
 });
