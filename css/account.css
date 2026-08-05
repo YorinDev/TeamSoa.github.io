@@ -1,0 +1,86 @@
+.account{
+
+    position:relative;
+    margin-left:20px;
+
+}
+
+#accountButton{
+
+    width:46px;
+    height:46px;
+
+    border:none;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    background:#222;
+
+    transition:.25s;
+
+}
+
+#accountButton:hover{
+
+    transform:scale(1.08);
+
+}
+
+#accountAvatar{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.account-menu{
+
+    position:absolute;
+
+    top:60px;
+
+    right:0;
+
+    width:190px;
+
+    background:#1d1d1d;
+
+    border-radius:12px;
+
+    display:none;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+}
+
+.account-menu.open{
+
+    display:block;
+
+}
+
+.account-menu a{
+
+    display:block;
+
+    padding:14px;
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+.account-menu a:hover{
+
+    background:#ff7b00;
+
+}
