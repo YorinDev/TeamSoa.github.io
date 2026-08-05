@@ -33,60 +33,72 @@ import {
 
 const roles = {
 
-    Owner:{
-        name:"Owner",
-        color:"#ff0000",
+    FondateurRL:{
+        name:"Fondateur-RL",
+        color:"#1B73D1",
         weight:0
     },
 
 
-    "Co-Owner":{
-        name:"Co-Owner",
-        color:"#ff7a00",
+    FondateurSOA:{
+        name:"Fondateur-SOA",
+        color:"#050505",
         weight:1
     },
 
 
-    Manager:{
-        name:"Manager",
-        color:"#9b59b6",
+    Secretaire:{
+        name:"Secrétaire",
+        color:"##ABDED3",
         weight:2
     },
 
 
-    Coach:{
-        name:"Coach",
-        color:"#3498db",
+    JoueurSOA:{
+        name:"Joueur-SOA",
+        color:"#DE9514",
         weight:3
     },
 
 
-    Creator:{
+    JoueurEspoirSOA:{
         name:"Creator",
-        color:"#ff66cc",
+        color:"#2CC789",
         weight:4
     },
 
 
-    Moderator:{
-        name:"Moderator",
-        color:"#00ffff",
+    Moderateur:{
+        name:"Modérateur",
+        color:"#0F75BF",
         weight:5
     },
 
 
-    Player:{
-        name:"Player",
-        color:"#2ecc71",
+    MiniaMaker:{
+        name:"MiniaMaker",
+        color:"#BF0F76",
         weight:6
     },
 
 
-    Member:{
-        name:"Member",
-        color:"#aaaaaa",
+    Animateur:{
+        name:"Animateur",
+        color:"#66D90F",
         weight:7
-    }
+    },
+
+    CreateurDeContenu:{
+        name:"Créateur-de-contenu",
+        color:"#8A2984",
+        weight:8
+    },
+
+    Membre:{
+        name:"Membre",
+        color:"##DBDBDB",
+        weight:9
+    },
 
 };
 
