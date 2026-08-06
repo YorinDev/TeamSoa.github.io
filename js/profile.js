@@ -59,51 +59,57 @@ const roles = {
         weight:3
     },
 
+    WebMaker:{
+        name:"WebMaker",
+        color:"#153218",
+        weight:4
+    },
+
 
     JoueurSOA:{
         name:"Joueur-SOA",
         color:"#DE9514",
-        weight:4
+        weight:5
     },
 
 
     JoueurEspoirSOA:{
         name:"Creator",
         color:"#2CC789",
-        weight:5
+        weight:6
     },
 
 
     Moderateur:{
         name:"Modérateur",
         color:"#0F75BF",
-        weight:6
+        weight:7
     },
 
 
     MiniaMaker:{
         name:"MiniaMaker",
         color:"#BF0F76",
-        weight:7
+        weight:8
     },
 
 
     Animateur:{
         name:"Animateur",
         color:"#66D90F",
-        weight:8
+        weight:9
     },
 
     CreateurDeContenu:{
         name:"Créateur-de-contenu",
         color:"#8A2984",
-        weight:9
+        weight:10
     },
 
     Membre:{
         name:"Membre",
         color:"##DBDBDB",
-        weight:10
+        weight:100
     }
 
 };
