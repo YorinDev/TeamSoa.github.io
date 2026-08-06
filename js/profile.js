@@ -109,7 +109,7 @@ const roles = {
     Membre:{
         name:"Membre",
         color:"##DBDBDB",
-        weight:100
+        weight:11
     }
 
 };
