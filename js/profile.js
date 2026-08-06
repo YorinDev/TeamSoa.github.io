@@ -4,7 +4,8 @@ import { auth, db } from "./firebase.js";
 import {
 
     onAuthStateChanged,
-    signOut
+    signOut,
+    reload
 
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
@@ -25,8 +26,6 @@ import {
 
 
 
-// COULEURS DES RANGS
-
 // ==========================
 // TABLE DES ROLES
 // ==========================
@@ -46,6 +45,7 @@ const roles = {
         weight:1
     },
 
+
     CoFondateur:{
         name:"Co-Fondateur",
         color:"#AD9B47",
@@ -58,6 +58,7 @@ const roles = {
         color:"#ABDED3",
         weight:3
     },
+
 
     WebMaker:{
         name:"WebMaker",
@@ -100,11 +101,13 @@ const roles = {
         weight:9
     },
 
+
     CreateurDeContenu:{
         name:"Créateur-de-contenu",
         color:"#8A2984",
         weight:10
     },
+
 
     Member:{
         name:"Membre",
@@ -118,79 +121,54 @@ const roles = {
 
 
 // ==========================
-// Récupérer les informations d'un rôle
+// Récupération rôle
 // ==========================
 
 function getRoleData(roleName){
 
-
     return roles[roleName] || roles.Member;
 
-
 }
 
 
 
 
 // ==========================
-// Trier une liste de comptes
-// Plus petit weight = plus haut
+// ELEMENTS
 // ==========================
 
-function sortUsersByRole(users){
+const avatar =
+document.getElementById("profileAvatar");
 
 
-    return users.sort((a,b)=>{
+const username =
+document.getElementById("profileUsername");
 
 
-        const roleA =
-        getRoleData(a.role).weight;
+const email =
+document.getElementById("profileEmail");
 
 
-        const roleB =
-        getRoleData(b.role).weight;
+const role =
+document.getElementById("profileRole");
 
 
-
-        return roleA - roleB;
-
-
-    });
+const verified =
+document.getElementById("profileVerified");
 
 
-}
+const date =
+document.getElementById("profileDate");
 
 
-
-
-
-
-// ELEMENTS PROFIL
-
-
-const avatar = document.getElementById("profileAvatar");
-
-const username = document.getElementById("profileUsername");
-
-const email = document.getElementById("profileEmail");
-
-
-const role = document.getElementById("profileRole");
-
-const verified = document.getElementById("profileVerified");
-
-const date = document.getElementById("profileDate");
-
-
-const logout = document.getElementById("logoutButton");
+const logout =
+document.getElementById("logoutButton");
 
 
 
 
 
-
-// MODIFICATION PSEUDO
-
+// Modification pseudo
 
 const editUsernameButton =
 document.getElementById("editUsernameButton");
@@ -215,11 +193,7 @@ document.getElementById("cancelUsername");
 
 
 
-
-
-
-// MODIFICATION AVATAR
-
+// Modification avatar
 
 const avatarContainer =
 document.querySelector(".avatar-container");
@@ -246,24 +220,13 @@ document.getElementById("cancelAvatar");
 
 
 
-
-
 let currentUser = null;
 
 let cropper = null;
 
-
-
-
-
-
-
-
-
 // ========================
 // CHARGEMENT PROFIL
 // ========================
-
 
 onAuthStateChanged(auth, async(user)=>{
 
@@ -282,11 +245,66 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-    if(email){
+    // Recharge les informations Firebase Auth
+    // pour avoir le vrai état emailVerified
 
-        email.textContent=user.email;
+    await reload(user);
+
+
+
+
+
+    // Met à jour Firestore après validation du mail
+
+    if(user.emailVerified){
+
+
+        const userRef =
+        doc(db,"users",user.uid);
+
+
+
+        const userDoc =
+        await getDoc(userRef);
+
+
+
+        if(userDoc.exists()){
+
+
+            if(userDoc.data().verified !== true){
+
+
+                await updateDoc(
+
+                    userRef,
+
+                    {
+                        verified:true
+                    }
+
+                );
+
+
+            }
+
+
+        }
+
 
     }
+
+
+
+
+
+    if(email){
+
+        email.textContent =
+        user.email;
+
+    }
+
 
 
 
@@ -311,6 +329,7 @@ onAuthStateChanged(auth, async(user)=>{
 
         const data =
         userDoc.data();
+
 
 
 
@@ -347,11 +366,16 @@ onAuthStateChanged(auth, async(user)=>{
             data.role ||
             "Member";
 
+
+
             const roleInfo =
             getRoleData(userRole);
 
+
+
             role.textContent =
             roleInfo.name;
+
 
 
             role.style.color =
@@ -365,18 +389,16 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-
         if(verified){
 
 
             verified.textContent =
-            user.emailVerified
+            data.verified
             ? "Oui"
             : "Non";
 
 
         }
-
 
 
 
@@ -407,14 +429,9 @@ onAuthStateChanged(auth, async(user)=>{
 
 
 
-
-
-
-
 // ========================
 // MODIFICATION PSEUDO
 // ========================
-
 
 
 if(editUsernameButton){
@@ -426,14 +443,20 @@ editUsernameButton.addEventListener("click",()=>{
     usernameModal.classList.add("active");
 
 
-    newUsername.value =
-    username.textContent;
+
+    if(username){
+
+        newUsername.value =
+        username.textContent;
+
+    }
 
 
 });
 
 
 }
+
 
 
 
@@ -460,6 +483,7 @@ cancelUsername.addEventListener("click",()=>{
 
 
 
+
 if(saveUsername){
 
 
@@ -468,6 +492,7 @@ saveUsername.addEventListener("click",async()=>{
 
     if(!currentUser)
     return;
+
 
 
 
@@ -507,7 +532,6 @@ saveUsername.addEventListener("click",async()=>{
 
 
             if(difference < 2*60*60*1000){
-
 
 
                 const minutes =
@@ -554,8 +578,10 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
+
     if(!pseudo)
     return;
+
 
 
 
@@ -593,7 +619,10 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
+
     let exists=false;
+
+
 
 
 
@@ -615,7 +644,6 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-
     if(exists){
 
 
@@ -628,7 +656,6 @@ saveUsername.addEventListener("click",async()=>{
 
 
     }
-
 
 
 
@@ -660,8 +687,14 @@ saveUsername.addEventListener("click",async()=>{
 
 
 
-    username.textContent =
-    pseudo;
+
+    if(username){
+
+        username.textContent =
+        pseudo;
+
+    }
+
 
 
 
@@ -674,18 +707,9 @@ saveUsername.addEventListener("click",async()=>{
 
 }
 
-
-
-
-
-
-
-
-
 // ========================
 // MODIFICATION AVATAR
 // ========================
-
 
 
 if(avatarContainer){
@@ -720,9 +744,11 @@ cancelAvatar.addEventListener("click",()=>{
 
     if(cropper){
 
+
         cropper.destroy();
 
         cropper=null;
+
 
     }
 
@@ -731,6 +757,7 @@ cancelAvatar.addEventListener("click",()=>{
 
 
 }
+
 
 
 
@@ -752,6 +779,8 @@ avatarInput.addEventListener("change",(event)=>{
 
     if(!file)
     return;
+
+
 
 
 
@@ -780,6 +809,7 @@ avatarInput.addEventListener("change",(event)=>{
 
 
 
+
     reader.onload=()=>{
 
 
@@ -791,11 +821,13 @@ avatarInput.addEventListener("change",(event)=>{
 
 
 
+
         if(cropper){
 
             cropper.destroy();
 
         }
+
 
 
 
@@ -831,6 +863,7 @@ avatarInput.addEventListener("change",(event)=>{
 
 
 
+
     reader.readAsDataURL(file);
 
 
@@ -839,6 +872,10 @@ avatarInput.addEventListener("change",(event)=>{
 
 
 }
+
+
+
+
 
 
 
@@ -878,6 +915,8 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+
+
     if(userData.exists()){
 
 
@@ -888,7 +927,9 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+
         if(lastChange){
+
 
 
             const difference =
@@ -900,7 +941,11 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+
+
             if(difference < 12*60*60*1000){
+
+
 
 
 
@@ -912,6 +957,9 @@ saveAvatar.addEventListener("click",async()=>{
                     3600000
 
                 );
+
+
+
 
 
 
@@ -930,6 +978,7 @@ saveAvatar.addEventListener("click",async()=>{
                 return;
 
 
+
             }
 
 
@@ -945,14 +994,16 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+
     const canvas =
     cropper.getCroppedCanvas({
 
-        width:512,
+        width:256,
 
-        height:512
+        height:256
 
     });
+
 
 
 
@@ -965,9 +1016,11 @@ saveAvatar.addEventListener("click",async()=>{
 
         "image/jpeg",
 
-        0.85
+        0.75
 
     );
+
+
 
 
 
@@ -1000,12 +1053,21 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
-    avatar.src=image;
+    if(avatar){
+
+        avatar.src=image;
+
+    }
+
+
 
 
 
 
     avatarModal.classList.remove("active");
+
+
+
 
 
 
@@ -1030,10 +1092,12 @@ saveAvatar.addEventListener("click",async()=>{
 
 
 
+
+
+
 // ========================
 // DECONNEXION
 // ========================
-
 
 
 if(logout){
