@@ -55,7 +55,7 @@ const roles = {
 
     Secretaire:{
         name:"Secrétaire",
-        color:"##ABDED3",
+        color:"#ABDED3",
         weight:3
     },
 
@@ -106,9 +106,9 @@ const roles = {
         weight:10
     },
 
-    Membre:{
+    Member:{
         name:"Membre",
-        color:"##DBDBDB",
+        color:"#DBDBDB",
         weight:11
     }
 
