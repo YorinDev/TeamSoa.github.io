@@ -17,7 +17,6 @@
 
 <style>
 
-
 /* ==========================
         PAGE PROFIL
 ========================== */
@@ -41,53 +40,39 @@
 
 
 
-
 /* ==========================
-        CARTE
+        CARTE PROFIL
 ========================== */
 
 
 .profile-card{
 
-
     width:400px;
 
     max-width:100%;
 
-
     background:rgba(255,122,0,.05);
-
 
     border:1px solid rgba(255,122,0,.25);
 
-
     border-radius:25px;
-
 
     padding:40px;
 
-
     text-align:center;
-
 
     box-shadow:
     0 0 30px rgba(255,122,0,.15);
 
-
-
     animation:
-
     profileAppear .6s ease;
-
 
 }
 
 
 
 
-
 @keyframes profileAppear{
-
 
     from{
 
@@ -108,10 +93,7 @@
 
     }
 
-
 }
-
-
 
 
 
@@ -124,23 +106,17 @@
 
 .profile-card img{
 
-
     width:150px;
 
     height:150px;
 
-
     border-radius:50%;
-
 
     object-fit:cover;
 
-
     border:3px solid #FF7A00;
 
-
     transition:.3s;
-
 
 }
 
@@ -149,12 +125,9 @@
 
 .profile-card img:hover{
 
-
     transform:scale(1.05);
 
-
 }
-
 
 
 
@@ -167,18 +140,13 @@
 
 .profile-card h1{
 
-
     color:#FF7A00;
-
 
     margin-top:25px;
 
-
     font-size:32px;
 
-
     word-break:break-word;
-
 
 }
 
@@ -194,12 +162,9 @@
 
 .profile-info{
 
-
     margin-top:30px;
 
-
     text-align:left;
-
 
 }
 
@@ -208,15 +173,11 @@
 
 .info{
 
-
     margin-bottom:15px;
-
 
     color:#C9CED6;
 
-
     font-size:16px;
-
 
 }
 
@@ -225,12 +186,9 @@
 
 .info span{
 
-
     color:white;
 
-
     font-weight:bold;
-
 
 }
 
@@ -239,9 +197,7 @@
 
 .role{
 
-
     font-weight:bold;
-
 
 }
 
@@ -258,9 +214,7 @@
 
 .back{
 
-
     margin-top:30px;
-
 
 }
 
@@ -269,26 +223,19 @@
 
 .back a{
 
-
     color:#FF7A00;
-
 
     text-decoration:none;
 
-
     transition:.3s;
-
 
 }
 
 
 
-
 .back a:hover{
 
-
     color:#FFA33A;
-
 
 }
 
@@ -306,43 +253,32 @@
 @media(max-width:500px){
 
 
+    .profile-card{
 
-.profile-card{
+        padding:25px;
 
-
-    padding:25px;
-
-
-}
+    }
 
 
 
-.profile-card img{
+    .profile-card img{
 
+        width:120px;
 
-    width:120px;
+        height:120px;
 
-    height:120px;
-
-
-}
+    }
 
 
 
-.profile-card h1{
+    .profile-card h1{
 
+        font-size:26px;
 
-    font-size:26px;
+    }
 
 
 }
-
-
-
-}
-
-
-
 
 
 
@@ -354,19 +290,14 @@
 
 
 
-
 <body>
-
 
 
 
 
 <header>
 
-
 <nav>
-
-
 
 
 <div class="nav-left">
@@ -422,7 +353,6 @@ Accueil
 
 
 
-
 <div class="nav-right">
 
 
@@ -450,23 +380,17 @@ Nous contacter
 
 
 
-
 <div id="account-container"></div>
-
 
 
 
 </div>
 
 
-
-
 </nav>
 
 
-
 </header>
-
 
 
 
@@ -478,17 +402,11 @@ Nous contacter
 
 
 
-
-
 <section class="profile-page">
 
 
 
-
-
 <div class="profile-card">
-
-
 
 
 
@@ -508,16 +426,11 @@ alt="Avatar du profil"
 
 
 
-
-
 <h1 id="pseudo">
-
 
 Chargement...
 
-
 </h1>
-
 
 
 
@@ -531,10 +444,7 @@ Chargement...
 
 
 
-
-
 <div class="info">
-
 
 Rôle :
 
@@ -542,15 +452,11 @@ Rôle :
 
 id="role"
 
-class="role"
-
->
+class="role">
 
 Chargement...
 
 </span>
-
-
 
 </div>
 
@@ -560,26 +466,17 @@ Chargement...
 
 
 
-
-
 <div class="info">
-
 
 Compte vérifié :
 
 <span id="verified">
 
-
 Chargement...
-
 
 </span>
 
-
-
 </div>
-
-
 
 
 
@@ -589,19 +486,14 @@ Chargement...
 
 <div class="info">
 
-
 Inscrit depuis :
 
 <span id="date">
 
-
 Chargement...
-
 
 </span>
 
-
-
 </div>
 
 
@@ -609,9 +501,7 @@ Chargement...
 
 
 
-
 </div>
-
 
 
 
@@ -625,9 +515,7 @@ Chargement...
 
 <a href="actualites.html">
 
-
 ← Retour aux actualités
-
 
 </a>
 
@@ -640,17 +528,11 @@ Chargement...
 
 
 
-
 </div>
 
 
 
-
-
-
 </section>
-
-
 
 
 
@@ -665,14 +547,10 @@ Chargement...
 
 <script type="module" src="js/voir-profil.js"></script>
 
-
 <script type="module" src="js/account.js"></script>
 
 
 
-
-
 </body>
-
 
 </html>
