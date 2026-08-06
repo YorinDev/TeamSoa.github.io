@@ -191,7 +191,7 @@ async function loadProfile(){
 
     const userRole =
     roles[data.role] ||
-    roles.Membre;
+    roles.Member;
 
 
 
