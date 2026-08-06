@@ -2,21 +2,24 @@
 <html lang="fr">
 
 <head>
+
 <script type="module" src="js/script.js"></script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SOA Esport | Actualités</title>
 
 <link rel="stylesheet" href="css/style.css">
-
 <link rel="stylesheet" href="css/account.css">
+
 
 <style>
 
 /* ==========================
         HEADER
 ========================== */
+
 
 .news-header{
 
@@ -25,12 +28,14 @@
 
 }
 
+
 .news-header h1{
 
     font-size:60px;
     color:#FF7A00;
 
 }
+
 
 .news-header p{
 
@@ -40,9 +45,12 @@
 
 }
 
+
+
 /* ==========================
         RECHERCHE
 ========================== */
+
 
 .news-tools{
 
@@ -62,6 +70,7 @@
 
 }
 
+
 .search-box input{
 
     width:340px;
@@ -78,23 +87,9 @@
 
     outline:none;
 
-    transition:.3s;
-
 }
 
-.search-box input:focus{
 
-    border-color:#FF7A00;
-
-    box-shadow:0 0 15px rgba(255,122,0,.25);
-
-}
-
-.filter{
-
-    position:relative;
-
-}
 
 .filter button{
 
@@ -110,104 +105,14 @@
 
     cursor:pointer;
 
-    font-weight:600;
-
-    transition:.3s;
-
-}
-
-.filter button:hover{
-
-    background:#FFA33A;
-
-}
-
-.tag-menu{
-
-    position:absolute;
-
-    top:60px;
-
-    left:50%;
-
-    transform:translateX(-50%) translateY(-15px) scale(.95);
-
-    width:220px;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    pointer-events:none;
-
-    display:flex;
-    
-    flex-direction:column;
-
-    gap:12px;
-
-    background:#16100A;
-
-    border:1px solid rgba(255,122,0,.2);
-
-    border-radius:15px;
-
-    padding:20px;
-
-    box-shadow:0 0 30px rgba(255,122,0,.2);
-
-    z-index:999;
-
-    transition:
-
-        opacity .3s ease,
-
-        transform .3s ease,
-
-        visibility .3s;
-
 }
 
 
-.tag-menu.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-    pointer-events:auto;
-
-    transform:translateX(-50%) translateY(0) scale(1);
-
-}
-
-
-.tag-menu label{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    color:#DDD;
-
-    cursor:pointer;
-
-    width:100%;
-
-}
-
-
-.tag-menu input{
-
-    margin:0;
-
-}
 
 /* ==========================
         ACTUALITES
 ========================== */
+
 
 .news{
 
@@ -217,7 +122,11 @@
 
 }
 
+
+
 .news-card{
+
+    position:relative;
 
     background:rgba(255,122,0,.04);
 
@@ -233,15 +142,99 @@
 
 }
 
+
+
 .news-card:hover{
 
     transform:translateY(-8px);
 
     border-color:#FF7A00;
 
-    box-shadow:0 0 35px rgba(255,122,0,.25);
+}
+
+
+
+/* ==========================
+        AUTEUR DE L'ANNONCE
+========================== */
+
+
+.news-author{
+
+    position:absolute;
+
+    right:30px;
+
+    top:30px;
 
 }
+
+
+
+.news-author a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:#16100A;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    border:1px solid rgba(255,122,0,.2);
+
+    transition:.3s;
+
+}
+
+
+
+.news-author a:hover{
+
+    border-color:#FF7A00;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+.news-author img{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+
+
+.news-author span{
+
+    color:#FF7A00;
+
+    font-weight:600;
+
+}
+
+
+
+/* ==========================
+        CONTENU
+========================== */
+
 
 .news-date{
 
@@ -252,6 +245,8 @@
     margin-bottom:10px;
 
 }
+
+
 
 .news-tag{
 
@@ -269,6 +264,8 @@
 
 }
 
+
+
 .news-card h2{
 
     color:#FF7A00;
@@ -276,6 +273,8 @@
     margin-bottom:20px;
 
 }
+
+
 
 .news-card p{
 
@@ -285,65 +284,37 @@
 
 }
 
+
+
 @media(max-width:850px){
 
-.news-tools{
 
-flex-direction:column;
+.news-author{
 
-align-items:center;
+    position:static;
 
-}
-
-.search-box{
-
-width:100%;
-
-max-width:500px;
+    margin-top:25px;
 
 }
 
-.search-box input{
-
-width:100%;
-
-}
-
-.filter{
-
-width:100%;
-
-max-width:500px;
-
-}
-
-.filter button{
-
-width:100%;
-
-}
-
-.tag-menu{
-
-left:50%;
-
-right:auto;
-
-transform:translateX(-50%);
-
-}
 
 }
 
 </style>
 
+
 </head>
 
+
 <body>
+
+<body>
+
 
 <header>
 
 <nav>
+
 
 <div class="nav-left">
 
@@ -355,11 +326,15 @@ transform:translateX(-50%);
 
 </div>
 
+
+
 <div class="nav-center">
 
 <a href="./">Accueil</a>
 
 </div>
+
+
 
 <div class="nav-right">
 
@@ -369,19 +344,30 @@ transform:translateX(-50%);
 
 <a href="contact.html">Nous contacter</a>
 
+
 <div id="account-container"></div>
 
+
 </div>
+
 
 </nav>
 
 </header>
 
+
+
+
+
 <main>
+
+
 
 <section class="news-header">
 
+
 <h1>Actualités</h1>
+
 
 <p>
 
@@ -389,20 +375,36 @@ Suivez toutes les annonces et les nouveautés de SOA Esport.
 
 </p>
 
+
 </section>
+
+
+
+
+
+
 
 <section class="news-tools">
 
+
+
 <div class="search-box">
+
 
 <input
 type="text"
 id="searchInput"
 placeholder="Rechercher une actualité...">
 
+
 </div>
 
+
+
+
+
 <div class="filter">
+
 
 <button id="tagButton">
 
@@ -410,31 +412,126 @@ placeholder="Rechercher une actualité...">
 
 </button>
 
+
+
+
+
 <div class="tag-menu" id="tagMenu">
 
-<label><input type="checkbox" value="Annonce"> Annonce</label>
 
-<label><input type="checkbox" value="Recrutement"> Recrutement</label>
 
-<label><input type="checkbox" value="Vidéo"> Vidéo</label>
+<label>
+<input type="checkbox" value="Annonce">
+Annonce
+</label>
 
-<label><input type="checkbox" value="Post"> Post</label>
 
-<label><input type="checkbox" value="Update"> Update</label>
 
-<label><input type="checkbox" value="Evènement"> Evènement</label>
+<label>
+<input type="checkbox" value="Recrutement">
+Recrutement
+</label>
 
-<label><input type="checkbox" value="Tournois"> Tournois</label>
+
+
+<label>
+<input type="checkbox" value="Vidéo">
+Vidéo
+</label>
+
+
+
+<label>
+<input type="checkbox" value="Post">
+Post
+</label>
+
+
+
+<label>
+<input type="checkbox" value="Update">
+Update
+</label>
+
+
+
+<label>
+<input type="checkbox" value="Evènement">
+Evènement
+</label>
+
+
+
+<label>
+<input type="checkbox" value="Tournois">
+Tournois
+</label>
+
 
 </div>
 
+
 </div>
+
+
 
 </section>
 
+
+
+
+
+
+
+
+
 <section class="news reveal">
 
+
+
+
+
+
+
+<!-- ==========================
+        ANNONCE 1
+========================== -->
+
+
 <div class="news-card" data-tag="Update">
+
+
+
+
+
+<div class="news-author">
+
+
+<a href="voir-profil.html?uid=UID_A_REMPLACER">
+
+
+<img 
+src="images/default-avatar.png"
+alt="Avatar">
+
+
+<span>
+
+Pseudo
+
+</span>
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
 
 <div class="news-date">
 
@@ -442,30 +539,108 @@ placeholder="Rechercher une actualité...">
 
 </div>
 
+
+
+
+
 <div class="news-tag">
 
 Update
 
 </div>
 
-<h2>🖥️ Mise a jour du site - Ajout d'un system de compte</h2>
+
+
+
+
+<h2>
+
+🖥️ Mise a jour du site - Ajout d'un système de compte
+
+</h2>
+
+
+
+
 
 <p>
 
-Un system de compte à été mis en place. 
-Pour créer un compte, cliquez sur le bouton en haut a droite à coté "Nous contacter" puis cliquez sur "Connexion", ensuite cliquez sur Inscription pour créer votre compte.
-Pour la création d'un compte, il faudrat un email valide car une fois la création de votre compte il faudrat aller dans votre espace mail et trouver un mail du nom de "noreply",
-à noter que le mail peut être dans vos spams.
-Une fois votre compte créer, vous pourez changer votre compte en cliquant sur l'image en haut a droite puis cliquer sur "Mon profil".
-Une fois dans la page de modifications, vous pourez changer votre pseudo toute les 2 heures en cliquand sur le crayon a droite de celui-ci et changer votre photo de profil toute les 12 heures
-en cliquant sur celle-ci.
-Pour changer votre role, il faudra aller sur le <a href="contact.html">discord</a> principal et faire un ticket en expliquant le role demandé et en donnant des preuves valables.
+
+Un système de compte a été mis en place.
+
+Pour créer un compte, cliquez sur le bouton en haut à droite à côté de "Nous contacter" puis cliquez sur "Connexion", ensuite cliquez sur Inscription pour créer votre compte.
+
+
+Pour la création d'un compte, il faudra un email valide car une fois la création de votre compte il faudra aller dans votre espace mail et trouver un mail du nom de "noreply".
+
+
+À noter que le mail peut être dans vos spams.
+
+
+Une fois votre compte créé, vous pourrez changer votre compte en cliquant sur l'image en haut à droite puis cliquer sur "Mon profil".
+
+
+
+Une fois dans la page de modifications, vous pourrez changer votre pseudo toutes les 2 heures en cliquant sur le crayon à droite de celui-ci et changer votre photo de profil toutes les 12 heures en cliquant sur celle-ci.
+
+
+
+Pour changer votre rôle, il faudra aller sur le 
+<a href="contact.html">
+discord
+</a>
+principal et faire un ticket en expliquant le rôle demandé et en donnant des preuves valables.
+
 
 </p>
 
+
+
 </div>
 
+
+
+
+
+
+
+
+
+<!-- ==========================
+        ANNONCE 2
+========================== -->
+
+
 <div class="news-card" data-tag="Recrutement">
+
+
+
+<div class="news-author">
+
+
+<a href="voir-profil.html?uid=UID_A_REMPLACER">
+
+
+<img 
+src="images/default-avatar.png"
+alt="Avatar">
+
+
+<span>
+
+Pseudo
+
+</span>
+
+
+</a>
+
+
+</div>
+
+
+
+
 
 <div class="news-date">
 
@@ -473,31 +648,97 @@ Pour changer votre role, il faudra aller sur le <a href="contact.html">discord</
 
 </div>
 
+
+
+
+
 <div class="news-tag">
 
 Recrutement
 
 </div>
 
-<h2>🚀 SOA Esport recrute des joueurs Rocket League !</h2>
+
+
+
+
+<h2>
+
+🚀 SOA Esport recrute des joueurs Rocket League !
+
+</h2>
+
+
+
+
 
 <p>
 
+
 SOA Esport ouvre officiellement son recrutement pour renforcer ses rosters Rocket League.
+
 
 Nous recherchons des joueurs motivés, sérieux et investis, prêts à progresser en équipe et à participer à des tournois dans une ambiance compétitive et respectueuse.
 
+
+
 Que vous souhaitiez intégrer notre roster principal ou notre roster espoir, toutes les candidatures seront étudiées avec attention.
 
-Nous recherchons des joueurs ayant un rang minimum de Champion III (C3). Si vous pensez avoir le niveau et la motivation nécessaires, n'hésitez pas à rejoindre notre serveur Discord et à ouvrir un ticket de recrutement.
+
+
+Nous recherchons des joueurs ayant un rang minimum de Champion III (C3).
+
+
+
+Si vous pensez avoir le niveau et la motivation nécessaires, n'hésitez pas à rejoindre notre serveur Discord et à ouvrir un ticket de recrutement.
+
+
 
 Nous avons hâte de découvrir de nouveaux talents et de construire l'avenir de SOA Esport avec vous !
 
+
 </p>
+
+
+
 
 </div>
 
+<!-- ==========================
+        ANNONCE 3
+========================== -->
+
+
 <div class="news-card" data-tag="Annonce">
+
+
+
+<div class="news-author">
+
+
+<a href="voir-profil.html?uid=UID_A_REMPLACER">
+
+
+<img
+src="images/default-avatar.png"
+alt="Avatar">
+
+
+<span>
+
+Pseudo
+
+</span>
+
+
+</a>
+
+
+</div>
+
+
+
+
 
 <div class="news-date">
 
@@ -505,34 +746,77 @@ Nous avons hâte de découvrir de nouveaux talents et de construire l'avenir de 
 
 </div>
 
+
+
+
+
 <div class="news-tag">
 
 Annonce
 
 </div>
 
-<h2>Bienvenue sur le site officiel de SOA Esport !</h2>
+
+
+
+
+<h2>
+
+Bienvenue sur le site officiel de SOA Esport !
+
+</h2>
+
+
+
+
 
 <p>
 
+
 Le site officiel est désormais disponible.
+
 Vous pourrez y retrouver les joueurs,
 les tournois, les réseaux sociaux
 ainsi que toutes les futures annonces de la structure.
 
+
 </p>
+
+
+
 
 </div>
 
+
+
+
+
+
+
 </section>
+
 
 </main>
 
+
+
+
+
+
+
 <footer>
+
 
 <img src="images/SOA_logo_gris.jpg" alt="SOA">
 
-<h3>SOA ESPORT</h3>
+
+<h3>
+
+SOA ESPORT
+
+</h3>
+
+
 
 <p>
 
@@ -540,92 +824,249 @@ ainsi que toutes les futures annonces de la structure.
 
 </p>
 
+
+
 </footer>
 
+
+
+
+
+
+
+
+
 <script src="js/script.js"></script>
+
 <script src="js/animations.js"></script>
-
-<script>
-
-const searchInput = document.getElementById("searchInput");
-const tagButton = document.getElementById("tagButton");
-const tagMenu = document.getElementById("tagMenu");
-
-tagButton.addEventListener("click", () => {
-
-    tagMenu.classList.toggle("show");
-
-});
-
-document.addEventListener("click", (event) => {
-
-    if (
-        !tagMenu.contains(event.target) &&
-        !tagButton.contains(event.target)
-    ) {
-
-        tagMenu.classList.remove("show");
-
-    }
-
-});
-
-const cards = document.querySelectorAll(".news-card");
-const checkboxes = document.querySelectorAll("#tagMenu input");
-
-function filterNews(){
-
-    const search = searchInput.value.toLowerCase();
-
-    const selectedTags = [...checkboxes]
-        .filter(cb => cb.checked)
-        .map(cb => cb.value);
-
-    cards.forEach(card => {
-
-        const title =
-            card.querySelector("h2").textContent.toLowerCase();
-
-        const text =
-            card.querySelector("p").textContent.toLowerCase();
-
-        const tag =
-            card.dataset.tag;
-
-        const matchSearch =
-            title.includes(search) ||
-            text.includes(search);
-
-        const matchTag =
-            selectedTags.length === 0 ||
-            selectedTags.includes(tag);
-
-        if(matchSearch && matchTag){
-
-            card.style.display = "block";
-
-        }else{
-
-            card.style.display = "none";
-
-        }
-
-    });
-
-}
-
-searchInput.addEventListener("input", filterNews);
-
-checkboxes.forEach(box => {
-
-    box.addEventListener("change", filterNews);
-
-});
-
-</script>
 
 <script type="module" src="js/account.js"></script>
 
+
+
+
+
+
+
+<script>
+
+
+// ==========================
+// MENU TAGS
+// ==========================
+
+
+const searchInput =
+document.getElementById("searchInput");
+
+
+const tagButton =
+document.getElementById("tagButton");
+
+
+const tagMenu =
+document.getElementById("tagMenu");
+
+
+
+tagButton.addEventListener("click",()=>{
+
+
+    tagMenu.classList.toggle("show");
+
+
+});
+
+
+
+
+
+document.addEventListener("click",(event)=>{
+
+
+    if(
+
+        !tagMenu.contains(event.target)
+
+        &&
+
+        !tagButton.contains(event.target)
+
+    ){
+
+
+        tagMenu.classList.remove("show");
+
+
+    }
+
+
+});
+
+
+
+
+
+
+
+
+
+// ==========================
+// FILTRE ACTUALITES
+// ==========================
+
+
+const cards =
+document.querySelectorAll(".news-card");
+
+
+const checkboxes =
+document.querySelectorAll("#tagMenu input");
+
+
+
+
+
+
+function filterNews(){
+
+
+
+    const search =
+    searchInput.value.toLowerCase();
+
+
+
+
+    const selectedTags =
+    [...checkboxes]
+
+    .filter(cb=>cb.checked)
+
+    .map(cb=>cb.value);
+
+
+
+
+
+
+
+    cards.forEach(card=>{
+
+
+
+        const title =
+        card.querySelector("h2")
+        .textContent
+        .toLowerCase();
+
+
+
+
+        const text =
+        card.querySelector("p")
+        .textContent
+        .toLowerCase();
+
+
+
+
+        const tag =
+        card.dataset.tag;
+
+
+
+
+
+
+        const matchSearch =
+
+        title.includes(search)
+
+        ||
+
+        text.includes(search);
+
+
+
+
+
+
+        const matchTag =
+
+        selectedTags.length === 0
+
+        ||
+
+        selectedTags.includes(tag);
+
+
+
+
+
+
+
+
+        if(matchSearch && matchTag){
+
+
+            card.style.display="block";
+
+
+        }
+
+        else{
+
+
+            card.style.display="none";
+
+
+        }
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+searchInput.addEventListener(
+"input",
+filterNews
+);
+
+
+
+
+
+checkboxes.forEach(box=>{
+
+
+    box.addEventListener(
+    "change",
+    filterNews
+    );
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+
 </body>
+
 
 </html>
