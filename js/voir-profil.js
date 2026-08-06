@@ -70,7 +70,7 @@ const roles = {
         color:"#8A2984"
     },
 
-    Membre:{
+    Member:{
         name:"Membre",
         color:"#DBDBDB"
     }
