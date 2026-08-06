@@ -1,1 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SOA Esport | Profil</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+
+.profile-page{
+
+    padding-top:160px;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+
+.profile-card{
+
+    width:400px;
+
+    background:rgba(255,122,0,.05);
+
+    border:1px solid rgba(255,122,0,.25);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:
+    0 0 30px rgba(255,122,0,.15);
+
+}
+
+
+
+.profile-card img{
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #FF7A00;
+
+}
+
+
+
+.profile-card h1{
+
+    color:#FF7A00;
+
+    margin-top:25px;
+
+}
+
+
+
+.profile-info{
+
+    margin-top:30px;
+
+    text-align:left;
+
+}
+
+
+
+.info{
+
+    margin-bottom:15px;
+
+    color:#C9CED6;
+
+}
+
+
+
+.info span{
+
+    color:white;
+
+    font-weight:bold;
+
+}
+
+
+
+.role{
+
+    font-weight:bold;
+
+}
+
+
+
+.back{
+
+    margin-top:30px;
+
+}
+
+
+
+.back a{
+
+    color:#FF7A00;
+
+    text-decoration:none;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<nav>
+
+
+<div class="nav-left">
+
+<a href="joueurs.html">Joueurs</a>
+
+<a href="reseaux.html">Nos réseaux</a>
+
+<a href="fondateurs.html">Fondateurs</a>
+
+</div>
+
+
+
+<div class="nav-center">
+
+<a href="./">Accueil</a>
+
+</div>
+
+
+
+<div class="nav-right">
+
+<a href="tournois.html">Tournois</a>
+
+<a href="actualites.html">Actualités</a>
+
+<a href="contact.html">Nous contacter</a>
+
+
+<div id="account-container"></div>
+
+
+</div>
+
+
+</nav>
+
+</header>
+
+
+
+
+
+<main>
+
+
+<section class="profile-page">
+
+
+<div class="profile-card">
+
+
+
+<img 
+id="avatar"
+src="images/default-avatar.png"
+alt="Avatar">
+
+
+
+<h1 id="pseudo">
+
+Chargement...
+
+</h1>
+
+
+
+
+<div class="profile-info">
+
+
+
+<div class="info">
+
+Rôle :
+<span 
+id="role"
+class="role">
+Chargement...
+</span>
+
+</div>
+
+
+
+<div class="info">
+
+Compte vérifié :
+<span id="verified">
+Chargement...
+</span>
+
+</div>
+
+
+
+<div class="info">
+
+Inscrit depuis :
+<span id="date">
+Chargement...
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="back">
+
+<a href="actualites.html">
+
+← Retour aux actualités
+
+</a>
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+
+
+
+
+<script type="module" src="js/voir-profil.js"></script>
+
+<script type="module" src="js/account.js"></script>
+
+
+</body>
+
+</html>
