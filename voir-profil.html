@@ -8,9 +8,19 @@
 
 <title>SOA Esport | Profil</title>
 
+
 <link rel="stylesheet" href="css/style.css">
 
+<link rel="stylesheet" href="css/account.css">
+
+
+
 <style>
+
+
+/* ==========================
+        PAGE PROFIL
+========================== */
 
 
 .profile-page{
@@ -21,25 +31,287 @@
 
     justify-content:center;
 
+    min-height:80vh;
+
+    padding-left:20px;
+
+    padding-right:20px;
+
 }
+
+
+
+
+/* ==========================
+        CARTE
+========================== */
 
 
 .profile-card{
 
+
     width:400px;
+
+    max-width:100%;
+
 
     background:rgba(255,122,0,.05);
 
+
     border:1px solid rgba(255,122,0,.25);
+
 
     border-radius:25px;
 
+
     padding:40px;
+
 
     text-align:center;
 
+
     box-shadow:
     0 0 30px rgba(255,122,0,.15);
+
+
+
+    animation:
+
+    profileAppear .6s ease;
+
+
+}
+
+
+
+
+
+@keyframes profileAppear{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(30px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+        AVATAR
+========================== */
+
+
+.profile-card img{
+
+
+    width:150px;
+
+    height:150px;
+
+
+    border-radius:50%;
+
+
+    object-fit:cover;
+
+
+    border:3px solid #FF7A00;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+.profile-card img:hover{
+
+
+    transform:scale(1.05);
+
+
+}
+
+
+
+
+
+
+/* ==========================
+        PSEUDO
+========================== */
+
+
+.profile-card h1{
+
+
+    color:#FF7A00;
+
+
+    margin-top:25px;
+
+
+    font-size:32px;
+
+
+    word-break:break-word;
+
+
+}
+
+
+
+
+
+
+/* ==========================
+        INFORMATIONS
+========================== */
+
+
+.profile-info{
+
+
+    margin-top:30px;
+
+
+    text-align:left;
+
+
+}
+
+
+
+
+.info{
+
+
+    margin-bottom:15px;
+
+
+    color:#C9CED6;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+
+.info span{
+
+
+    color:white;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+.role{
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+        RETOUR
+========================== */
+
+
+.back{
+
+
+    margin-top:30px;
+
+
+}
+
+
+
+
+.back a{
+
+
+    color:#FF7A00;
+
+
+    text-decoration:none;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+.back a:hover{
+
+
+    color:#FFA33A;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+        MOBILE
+========================== */
+
+
+@media(max-width:500px){
+
+
+
+.profile-card{
+
+
+    padding:25px;
+
 
 }
 
@@ -47,15 +319,11 @@
 
 .profile-card img{
 
-    width:150px;
 
-    height:150px;
+    width:120px;
 
-    border-radius:50%;
+    height:120px;
 
-    object-fit:cover;
-
-    border:3px solid #FF7A00;
 
 }
 
@@ -63,67 +331,19 @@
 
 .profile-card h1{
 
-    color:#FF7A00;
 
-    margin-top:25px;
+    font-size:26px;
+
 
 }
 
 
 
-.profile-info{
-
-    margin-top:30px;
-
-    text-align:left;
-
 }
 
 
 
-.info{
 
-    margin-bottom:15px;
-
-    color:#C9CED6;
-
-}
-
-
-
-.info span{
-
-    color:white;
-
-    font-weight:bold;
-
-}
-
-
-
-.role{
-
-    font-weight:bold;
-
-}
-
-
-
-.back{
-
-    margin-top:30px;
-
-}
-
-
-
-.back a{
-
-    color:#FF7A00;
-
-    text-decoration:none;
-
-}
 
 
 </style>
@@ -132,52 +352,123 @@
 </head>
 
 
+
+
+
 <body>
+
+
+
 
 
 <header>
 
+
 <nav>
+
+
 
 
 <div class="nav-left">
 
-<a href="joueurs.html">Joueurs</a>
 
-<a href="reseaux.html">Nos réseaux</a>
+<a href="joueurs.html">
 
-<a href="fondateurs.html">Fondateurs</a>
+Joueurs
+
+</a>
+
+
+
+<a href="reseaux.html">
+
+Nos réseaux
+
+</a>
+
+
+
+<a href="fondateurs.html">
+
+Fondateurs
+
+</a>
+
+
 
 </div>
+
+
+
+
 
 
 
 <div class="nav-center">
 
-<a href="./">Accueil</a>
+
+<a href="./">
+
+Accueil
+
+</a>
+
 
 </div>
+
+
+
+
+
 
 
 
 <div class="nav-right">
 
-<a href="tournois.html">Tournois</a>
 
-<a href="actualites.html">Actualités</a>
+<a href="tournois.html">
 
-<a href="contact.html">Nous contacter</a>
+Tournois
+
+</a>
+
+
+
+<a href="actualites.html">
+
+Actualités
+
+</a>
+
+
+
+<a href="contact.html">
+
+Nous contacter
+
+</a>
+
+
 
 
 <div id="account-container"></div>
 
 
+
+
 </div>
+
+
 
 
 </nav>
 
+
+
 </header>
+
+
+
 
 
 
@@ -186,25 +477,50 @@
 <main>
 
 
+
+
+
 <section class="profile-page">
+
+
+
 
 
 <div class="profile-card">
 
 
 
-<img 
+
+
+
+
+<img
+
 id="avatar"
+
 src="images/default-avatar.png"
-alt="Avatar">
+
+alt="Avatar du profil"
+
+>
+
+
+
+
 
 
 
 <h1 id="pseudo">
 
+
 Chargement...
 
+
 </h1>
+
+
+
+
 
 
 
@@ -213,42 +529,92 @@ Chargement...
 
 
 
+
+
+
+
 <div class="info">
+
 
 Rôle :
-<span 
+
+<span
+
 id="role"
-class="role">
+
+class="role"
+
+>
+
 Chargement...
+
 </span>
+
+
 
 </div>
 
 
 
+
+
+
+
+
+
 <div class="info">
+
 
 Compte vérifié :
+
 <span id="verified">
+
+
 Chargement...
+
+
 </span>
 
+
+
 </div>
+
+
+
+
+
+
 
 
 
 <div class="info">
 
+
 Inscrit depuis :
+
 <span id="date">
+
+
 Chargement...
+
+
 </span>
 
+
+
 </div>
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -256,21 +622,36 @@ Chargement...
 
 <div class="back">
 
+
 <a href="actualites.html">
+
 
 ← Retour aux actualités
 
+
 </a>
 
+
+</div>
+
+
+
+
+
+
+
+
 </div>
 
 
 
 
-</div>
 
 
 </section>
+
+
+
 
 
 </main>
@@ -281,11 +662,17 @@ Chargement...
 
 
 
-<script type="module" src="js/voir-profil.js"></script>
+
+<script type="module" src="js/voir-profile.js"></script>
+
 
 <script type="module" src="js/account.js"></script>
 
 
+
+
+
 </body>
+
 
 </html>
